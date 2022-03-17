@@ -1,10 +1,11 @@
 import "./App.css";
-import logo from "./logo.png";
+import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/homePage/HomePage";
 
 function App() {
   return (
     <>
+    <Navbar/>
       <HomePage/>
     </>
   );

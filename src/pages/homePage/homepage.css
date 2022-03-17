@@ -29,6 +29,7 @@
     line-height: 70px;
     letter-spacing: 1px;
     cursor: pointer;
+    z-index: 5;
 }
 .front-text span:nth-child(1){
     -webkit-text-fill-color: transparent;
@@ -67,10 +68,17 @@
     margin: 0 1rem;
     cursor: pointer;
 }
+.bg-overlay{
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.26);
+}
 @media (max-width: 480px)  {
     .front-text{
         top: 20%;
         font-size: 3.75rem;
     }
-    
+    .bg-overlay{
+        background: rgba(0, 0, 0, 0.041);
+    }
 }

@@ -28,7 +28,9 @@ const HomePage = () => {
                         </a>
                     </div>
                 </div>
-                <div className="bg-img-sec"></div>
+                <div className="bg-img-sec">
+                    <div className="bg-overlay"></div>
+                </div>
             </div>
         </>
     );
