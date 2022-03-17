@@ -1,0 +1,76 @@
+.homepage-cont-sec{
+    height: 100vh;
+    width: 100vw;
+    background-color: #1A1A1A;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-img-sec{
+    height: 100%;
+    width: 60%;
+    background: url(https://promo-theme.com/mato/wp-content/uploads/2019/04/bg7.jpg) no-repeat center center/cover;
+}
+.dot{
+    height: 20rem;
+    width: 20rem;
+    border-radius: 50%;
+    border: 1px dotted white;
+}
+.front-text{
+    position: absolute;
+    top: 35%;
+    left: 20%;
+    font-size: 4rem;
+    color: #fff;
+    text-align: start;
+    font-weight: 1000;
+    line-height: 70px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+.front-text span:nth-child(1){
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px;
+}
+.front-text span:nth-child(2n){
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-transform: uppercase;
+    display: flex;
+    color: #dc493a;
+    margin-top: 2rem;
+}
+.compass-sec{
+    height: 100%;
+    width: 40%;
+    position: relative;
+}
+.compass-sec img{
+    height: 18rem;
+    width: 25rem;
+    filter: blur(3px);
+}
+.body-social-icon{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 5%;
+}
+.body-social-icon img{
+    height: 1rem;
+    width: 1rem;
+    filter: blur(0);
+    margin: 0 1rem;
+    cursor: pointer;
+}
+@media (max-width: 480px)  {
+    .front-text{
+        top: 20%;
+        font-size: 3.75rem;
+    }
+    
+}
