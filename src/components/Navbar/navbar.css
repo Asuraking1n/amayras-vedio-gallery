@@ -21,6 +21,10 @@
     justify-content: flex-end;
     cursor: pointer;
 }
+.navLink{
+    text-decoration: none;
+    color: #fff;
+}
 .nav-logo{
     text-decoration: none;
     color: #fff;
