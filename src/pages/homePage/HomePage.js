@@ -15,7 +15,7 @@ const HomePage = () => {
                     <span>.....watch reels</span>
                 </div>
                 <div className="compass-sec">
-                    <img src={circlebg} alt="" />
+                    <img src={circlebg} alt="c" />
                     <div className="body-social-icon">
                         <a href="#">
                             <img src={Linkedin} alt="linkedin" />
