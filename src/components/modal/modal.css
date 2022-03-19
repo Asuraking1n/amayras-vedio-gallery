@@ -1,0 +1,27 @@
+.modal-sec{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000000000000000;
+    display: flex;
+    opacity: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(235, 14, 14, 0.301);
+}
+
+.modal-cont{
+    height: 80%;
+    width: 80%;
+    background-color: #fff;
+}
+.modal-close{
+    text-align: right;
+    padding: 2rem;
+}
+.modal-close img{
+    height: 1rem;
+    cursor: pointer;
+}

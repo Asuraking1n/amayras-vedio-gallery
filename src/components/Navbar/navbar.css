@@ -21,6 +21,10 @@
     justify-content: flex-end;
     cursor: pointer;
 }
+.navLink{
+    text-decoration: none;
+    color: #fff;
+}
 .nav-logo{
     text-decoration: none;
     color: #fff;
@@ -29,18 +33,42 @@
     margin: 0 1rem;
     font-size:15px ;
 }
-.nav-routes img{
+.hamburger{
     display: none;
 }
 .nav-routes span:hover{
     color: #dc493a;
 }
-
+.up-arrow{
+    height: 1.5rem;
+    display: none;
+}
 @media (max-width: 480px)  {
-    .nav-routes span{
-        display: none;
+    .nav-routes{
+        background-color: rgba(0, 0, 0, 0.664);
+        flex-direction: column;
+        height:8rem;
+        width: 100%;
+        position: absolute;
+        justify-content: space-evenly;
+        right: 0;
+        top: -10rem;
+        transition: all 1s;
     }
-    .nav-routes img{
+    .nav-routes-active{
+        top: 0;
+    }
+    .up-arrow{
+        display: block;
+        cursor: grab;
+    }
+    .nav-routes span{
+        font-size: 1.3rem;
+        letter-spacing: 4px;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke: 1px;
+    }
+    .hamburger{
         display: block;
     }
 }

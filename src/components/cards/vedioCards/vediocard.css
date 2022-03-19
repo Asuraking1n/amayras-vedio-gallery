@@ -1,0 +1,49 @@
+.vedio-card-cont-sec{
+    height: 20rem;
+    width: 47%;
+    background: #000;
+    flex-grow: 1;
+    margin: 1rem;
+    cursor: pointer;
+    position: relative;
+}
+.vedio-card-cont-overlay{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.294);
+}
+.vedio-title{
+    color: #fff;
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: absolute;
+    font-weight: 1000;
+    bottom: 10%;
+    left: -1.5rem;
+}
+.yellow-hover-overlay{
+    position: absolute;
+    top: 0; 
+    height: 0;
+    width: 100%;
+    background-color: #dc4a3a50;
+    transition: all .5s ease-in-out;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.vedio-card-cont-overlay:hover > .yellow-hover-overlay{
+    height: 100%;
+}
+.veiw-vedio-btn{
+    padding: 1.2rem 2rem;
+    border-radius: 40px;
+    cursor: pointer;
+    border: none;
+    color: #dc493a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: #121212;
+}

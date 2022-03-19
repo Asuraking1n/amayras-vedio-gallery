@@ -1,0 +1,49 @@
+.vedioListing-cont-sec{
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+    background: #121212;
+}
+.vediolisting-heading{
+    font-weight: 700;
+    font-style: normal;
+    font-size: 60px;
+    line-height: 1.2;
+    color: #fff;
+    padding: 0 2rem;
+    padding-top: 6rem;
+}
+.vediolisting-category{
+    color: #fff;
+    padding:3rem 0;
+    opacity: 0.6;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+.vediolisting-category span{
+    margin: 0 2rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+.vediolisting-category span:hover{
+    color: #dc493a;
+}
+.vedio-cards-cont{
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    
+}
+
+@media (max-width: 480px)  {
+    .vediolisting-category span{
+        margin: 1.8rem;
+    }
+    .vediolisting-category span:nth-child(4n+1){
+        display: none;
+    }
+}
