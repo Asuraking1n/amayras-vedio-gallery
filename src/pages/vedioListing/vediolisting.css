@@ -13,6 +13,9 @@
     padding: 0 2rem;
     padding-top: 6rem;
 }
+.loadImg{
+    width: 100%;
+}
 .vediolisting-category{
     color: #fff;
     padding:3rem 0;
