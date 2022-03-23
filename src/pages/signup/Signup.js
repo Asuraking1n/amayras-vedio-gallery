@@ -25,10 +25,9 @@ const Login = () => {
             password:userCred.password
           })
           .then(res=>{
-            console.log(res);
             localStorage.setItem('token',res.data.encodedToken)
             navigate('/')
-          }).catch((e)=>console.warn(e))
+          }).catch((e)=>alert('got api error',e))
       }else{
           alert("PASSWORD DONT MATCH")
       }
