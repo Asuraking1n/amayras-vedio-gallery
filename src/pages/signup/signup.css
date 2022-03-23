@@ -1,0 +1,52 @@
+.login-sec{
+    height: 100vh;
+    padding: 0rem 2rem;
+}
+.signup-sec{
+    height: 110vh;
+    padding: 0rem 2rem;
+}
+.login-heading{
+    padding-left: 0;
+}
+.login-sec-cont{
+    height: auto;
+    margin-top: 5rem;
+    padding: 1rem 3rem;
+    border: 1px solid rgb(107, 107, 102);
+}
+.login-sec-cont span{
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #fff;
+}
+.login-mail-sec{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+.login-mail-sec input{
+    height: 3rem;
+    border: none;
+    color: #fff;
+    outline: none;
+    padding: 0 1rem;
+    background: transparent;
+    border-bottom: 1px solid rgb(107, 107, 102);
+}
+.login-sec-cont button{
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 10px 30px;
+    letter-spacing: .1em;
+    height: 45px;
+    color: #fff;
+    background: #dc493a;
+    cursor: pointer;
+    border: none;
+    margin: 2rem 0;
+    margin-right: 1rem;
+}
