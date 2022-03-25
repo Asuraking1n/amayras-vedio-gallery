@@ -5,17 +5,16 @@ import { useVedioData } from '../../context/vedio-data-context'
 const VedioListing = () => {
   const { vedio } = useVedioData()
 
-  console.log(vedio)
+  
   return (
     <>
       <div className="vedioListing-cont-sec">
         <div className="vediolisting-heading">Gallery</div>
         <div className="vediolisting-category">
           <span>All</span>
-          <span>Fashion</span>
-          <span>Beauty</span>
-          <span>Clothing</span>
-          <span>Fashion Shows</span>
+          <span>History</span>
+          <span>Watch Later</span>
+          <span>PlayList</span>
         </div>
         <div className="vedio-cards-cont" >
           {!vedio ? <>

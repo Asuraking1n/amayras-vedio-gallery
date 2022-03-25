@@ -9,7 +9,7 @@ const VedioCard = (props) => {
       <div className="vedio-card-cont-overlay">
       <div className="vedio-title">{props.vedioData.title}</div>
         <div className="yellow-hover-overlay">
-          <button className='veiw-vedio-btn' onClick={()=>setIsModal(true)}>View Vedio</button>
+          <button className='veiw-vedio-btn' onClick={()=>setIsModal(true)}>View Video</button>
           
         </div>
       </div>
