@@ -7,6 +7,9 @@
     cursor: pointer;
     position: relative;
 }
+.history-sec-con{
+    min-height: 100vh;
+}
 .vedio-card-cont-overlay{
     height: 100%;
     width: 100%;

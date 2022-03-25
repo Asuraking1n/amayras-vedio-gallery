@@ -2,6 +2,7 @@ import React from 'react'
 import VedioCard from '../../components/cards/vedioCards/VedioCard'
 import './vediolisting.css'
 import { useVedioData } from '../../context/vedio-data-context'
+import { Link } from 'react-router-dom'
 const VedioListing = () => {
   const { vedio } = useVedioData()
 
@@ -12,7 +13,7 @@ const VedioListing = () => {
         <div className="vediolisting-heading">Gallery</div>
         <div className="vediolisting-category">
           <span>All</span>
-          <span>History</span>
+          <Link to='/history' className='link'><span>History</span></Link>
           <span>Watch Later</span>
           <span>PlayList</span>
         </div>
