@@ -14,7 +14,9 @@ const VedioListing = () => {
         <div className="vediolisting-category">
           <span>All</span>
           <Link to='/history' className='link'><span>History</span></Link>
-          <span>Watch Later</span>
+          <Link to="/liked" className="link">
+                            <span>Liked Videos</span>
+                            </Link>
           <span>PlayList</span>
         </div>
         <div className="vedio-cards-cont" >

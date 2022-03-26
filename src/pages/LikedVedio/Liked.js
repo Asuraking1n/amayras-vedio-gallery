@@ -1,30 +1,20 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
+
+import React from "react";
 import { Link } from "react-router-dom";
-import HistoryCard from "../../components/cards/historyCard/HistoryCard";
-import Clear from "../../images/clear.png";
-import "./history.css";
-import { useHistory } from "../../context/history-context";
-const History = () => {
-    const { historyData, setHistoryData } = useHistory();
+import './liked.css'
+import LikeCard from "../../components/cards/likeCard/LikeCard";
+import { useLike } from "../../context/like-context";
+const Liked = () => {
+    const {LikedData}= useLike()
     let token = localStorage.getItem("token");
-
-    const clearHistory = () => {
-        axios
-            .delete("/api/user/history/all", {
-                headers: { authorization: token },
-            })
-            .then((res) => setHistoryData(res.data.history));
-    };
-
+    
     return (
         <>
             <div className="vedioListing-cont-sec history-sec-con">
                 {token ? (
                     <>
                         <div className="vediolisting-heading history-heading">
-                            Watch History
-                            <img src={Clear} alt="cancel" onClick={clearHistory} />
+                            Liked Videos
                         </div>
                         <div className="vediolisting-category">
                             <Link to="/vedios" className="link">
@@ -39,14 +29,15 @@ const History = () => {
                             <span>PlayList</span>
                         </div>
                         <div className="vedio-cards-cont">
-                            {historyData.length > 0 ? (
-                                historyData.map((video, id) => {
-                                    return <HistoryCard key={id} videoCollection={video} />;
+                            {LikedData.length > 0 ? 
+                            (
+                                LikedData.map((video, id) => {
+                                    return <LikeCard key={id} videoCollection={video} />;
                                 })
                             ) : (
                                 <>
                                     <div className="blank-load">
-                                        <span>Why Havn't You Watched SomeThing ? </span>
+                                        <span>Don't you like SomeThing ? ? </span>
                                         <Link to="/vedios">
                                             <button>Explore</button>
                                         </Link>
@@ -62,7 +53,8 @@ const History = () => {
                 ) : (
                     <>
                         <div className="login-user">
-                            LogIn To Watch What you watched till now 😃
+                            
+                            LogIn To add liked vedios 😃
                         </div>
                     </>
                 )}
@@ -71,4 +63,4 @@ const History = () => {
     );
 };
 
-export default History;
+export default Liked;
