@@ -23,9 +23,9 @@ const Login = () => {
     }
  
 
-    const logInUser=async(e)=>{
+    const logInUser=(e)=>{
       e.preventDefault();
-      await axios.post('/api/auth/login',{
+      axios.post('/api/auth/login',{
           email:userCred.email,
           password:userCred.pass
         })

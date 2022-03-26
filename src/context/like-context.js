@@ -9,6 +9,7 @@ const LikeProvider=({children})=>{
     const location = useLocation()
     useEffect(()=>{
         if (token) {
+            console.log(token);
                 axios.get(`/api/user/likes`, {
                 headers: {
                     authorization: token 

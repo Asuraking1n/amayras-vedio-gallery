@@ -12,7 +12,7 @@ const LikeCard = (props) => {
   const deleteFromList=()=>{
     axios.delete(`/api/user/likes/${props.videoCollection._id}`,{
       headers:{authorization: token}
-  }).then((res)=>setLikedData(res.data.likes) || console.log(res.data))
+  }).then((res)=>setLikedData(res.data.likes) )
   }
   return (
     <>
