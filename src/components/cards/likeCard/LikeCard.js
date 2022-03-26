@@ -14,7 +14,6 @@ const LikeCard = (props) => {
       headers:{authorization: token}
   }).then((res)=>setLikedData(res.data.likes) || console.log(res.data))
   }
-  console.log(props.videoCollection._id)
   return (
     <>
         <div className="history-card-cont">

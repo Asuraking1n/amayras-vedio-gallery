@@ -14,8 +14,6 @@ const LikeProvider=({children})=>{
                     authorization: token 
                 }
             }).then((res)=>setLikedData(res.data.likes))
-        }else{
-            alert('PLEASE LOGIN')
         }
     },[location])
     return(<>
