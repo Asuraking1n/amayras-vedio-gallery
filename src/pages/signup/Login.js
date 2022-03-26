@@ -9,8 +9,8 @@ const Login = () => {
         pass:''
     })
     const dummyUser = {
-      email: "adarshbalika@gmail.com",
-      pass: "adarshBalika123"
+      email: "nishant@gmail.com",
+      pass: "nishant"
     }
     const addDummyUser=(e)=>{
       e.preventDefault()
@@ -27,10 +27,9 @@ const Login = () => {
       e.preventDefault();
       await axios.post('/api/auth/login',{
           email:userCred.email,
-          password:userCred.password
+          password:userCred.pass
         })
         .then((res)=>{
-          console.log(res)
           localStorage.setItem('token',res.data.encodedToken)
           navigate('/')
         })

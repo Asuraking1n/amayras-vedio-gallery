@@ -30,6 +30,10 @@
     cursor: pointer;
     font-weight: 600;
 }
+.link{
+    text-decoration: none;
+    color: #fff;
+}
 .vediolisting-category span:hover{
     color: #dc493a;
 }
