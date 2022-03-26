@@ -14,7 +14,6 @@ const LikeCard = (props) => {
       headers:{authorization: token}
   }).then((res)=>setLikedData(res.data.likes) )
   }
-
   return (
     <>
         <div className="history-card-cont">
