@@ -15,6 +15,19 @@ const HistoryCard = (props) => {
       headers:{authorization: token}
   }).then((res)=>setHistoryData(res.data.history))
   }
+
+  const addToLike = async(video,token) => {
+    if (token) {
+        return await axios.post(`/api/user/likes`,{video}, {
+            headers: {
+                authorization: token 
+            }
+        })
+    }else{
+        alert('PLEASE LOGIN')
+    }
+  }
+  
   return (
     <>
         <div className="history-card-cont">
@@ -22,8 +35,8 @@ const HistoryCard = (props) => {
             <div className="img-black-overlay">
             <div className="h-card-overlay">
                 <div className="h-card-buttons-cont">
-                    <img src={btnShare} alt="button" />
-                    {!isLiked?<img src={btnLike} alt="button" onClick={()=>setIsLiked(true)}/>:<img src={btnLikeDone} alt="button" />}
+                    <img src={btnShare} alt="button" onClick={navigator.clipboard.writeText(`https://www.youtube.com/embed/${props.videoCollection._id}`)}/>
+                    {!isLiked?<img src={btnLike} alt="button" onClick={()=>setIsLiked(true) ||addToLike(props.videoCollection,token)}/>:<img src={btnLikeDone} alt="button" />}
                     <img src={btndelete} alt="button" onClick={deleteFromList}/>
                 </div>
             </div>

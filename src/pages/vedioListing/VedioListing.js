@@ -2,7 +2,7 @@ import React from "react";
 import VedioCard from "../../components/cards/vedioCards/VedioCard";
 import "./vediolisting.css";
 import { useVedioData } from "../../context/vedio-data-context";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 const VedioListing = () => {
   const { vedio } = useVedioData();
 
@@ -11,16 +11,41 @@ const VedioListing = () => {
       <div className="vedioListing-cont-sec">
         <div className="vediolisting-heading">Gallery</div>
         <div className="vediolisting-category">
-          <span>All</span>
-          <Link to="/history" className="link">
+          <NavLink
+            to="/vedios"
+            className="link"
+            style={({ isActive }) => ({ color: isActive ? "#dc493a" : "#fff" })}
+          >
+            <span>All</span>
+          </NavLink>
+          <NavLink
+            to="/history"
+            className="link"
+            style={({ isActive }) => ({ color: isActive ? "#dc493a" : "#fff" })}
+          >
             <span>History</span>
-          </Link>
-          <Link to="/liked" className="link">
+          </NavLink>
+          <NavLink
+            to="/liked"
+            className="link"
+            style={({ isActive }) => ({ color: isActive ? "#dc493a" : "#fff" })}
+          >
             <span>Liked Videos</span>
-          </Link>
-          <Link to="/playlist" className="link">
+          </NavLink>
+          <NavLink
+            to="/playlist"
+            className="link"
+            style={({ isActive }) => ({ color: isActive ? "#dc493a" : "#fff" })}
+          >
             <span>PlayList</span>
-          </Link>
+          </NavLink>
+          <NavLink
+            to="/watchlater"
+            className="link"
+            style={({ isActive }) => ({ color: isActive ? "#dc493a" : "#fff" })}
+          >
+            <span>Watch Later</span>
+          </NavLink>
         </div>
         <div className="vedio-cards-cont">
           {!vedio ? (

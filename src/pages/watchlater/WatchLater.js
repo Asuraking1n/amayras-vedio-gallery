@@ -2,20 +2,12 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import HistoryCard from "../../components/cards/historyCard/HistoryCard";
-import Clear from "../../images/clear.png";
-import "./history.css";
-import { useHistory } from "../../context/history-context";
-const History = () => {
-  const { historyData, setHistoryData } = useHistory();
+import WatchLaterCard from "../../components/cards/WatchLaterCard/WatchLaterCard";
+import { useWatchLater } from "../../context/watchlater-context";
+const WatchLater = () => {
+  const { WatchLaterData } = useWatchLater();
   let token = localStorage.getItem("token");
 
-  const clearHistory = () => {
-    axios
-      .delete("/api/user/history/all", {
-        headers: { authorization: token },
-      })
-      .then((res) => setHistoryData(res.data.history));
-  };
 
   return (
     <>
@@ -23,8 +15,7 @@ const History = () => {
         {token ? (
           <>
             <div className="vediolisting-heading history-heading">
-              Watch History
-              <img src={Clear} alt="cancel" onClick={clearHistory} />
+              Watch Later
             </div>
             <div className="vediolisting-category">
               <NavLink
@@ -74,14 +65,14 @@ const History = () => {
               </NavLink>
             </div>
             <div className="vedio-cards-cont">
-              {historyData.length > 0 ? (
-                historyData.map((video, id) => {
-                  return <HistoryCard key={id} videoCollection={video} />;
+              { WatchLaterData? (
+                 WatchLaterData.map((video, id) => {
+                  return <WatchLaterCard key={id} videoCollection={video} />;
                 })
               ) : (
                 <>
                   <div className="blank-load">
-                    <span>Why Havn't You Watched SomeThing ? </span>
+                    <span>Why Havn't You added something ? </span>
                     <Link to="/vedios">
                       <button>Explore</button>
                     </Link>
@@ -97,7 +88,7 @@ const History = () => {
         ) : (
           <>
             <div className="login-user">
-              LogIn To Watch What you watched till now 😃
+              LogIn To add something 😃
             </div>
           </>
         )}
@@ -106,4 +97,4 @@ const History = () => {
   );
 };
 
-export default History;
+export default WatchLater;

@@ -1,19 +1,32 @@
 import React,{useState} from 'react'
 import btnShare from '../../../images/share.png'
-import btndelete from '../../../images/delete.png'
-import axios from 'axios'
 import btnLike from '../../../images/like.png'
 import btnLikeDone  from '../../../images/like-done.png'
-import { useLike } from '../../../context/like-context'
-const LikeCard = (props) => {
-  const {setLikedData} = useLike()
+import btndelete from '../../../images/delete.png'
+import { useWatchLater } from '../../../context/watchlater-context'
+import axios from 'axios'
+
+const WatchLaterCard = (props) => {
   const [isLiked,setIsLiked] = useState(false)
+  const {setWatchLaterData} = useWatchLater()
   let token = localStorage.getItem('token')
   const deleteFromList=()=>{
-    axios.delete(`/api/user/likes/${props.videoCollection._id}`,{
+    axios.delete(`/api/user/watchlater/${props.videoCollection._id}`,{
       headers:{authorization: token}
-  }).then((res)=>setLikedData(res.data.likes) )
+  }).then((res)=>setWatchLaterData(res.data.watchlater) )
   }
+  const addToLike = async(video,token) => {
+    if (token) {
+        return await axios.post(`/api/user/likes`,{video}, {
+            headers: {
+                authorization: token 
+            }
+        })
+    }else{
+        alert('PLEASE LOGIN')
+    }
+  }
+  
   return (
     <>
         <div className="history-card-cont">
@@ -22,8 +35,8 @@ const LikeCard = (props) => {
             <div className="h-card-overlay">
                 <div className="h-card-buttons-cont">
                     <img src={btnShare} alt="button" onClick={navigator.clipboard.writeText(`https://www.youtube.com/embed/${props.videoCollection._id}`)}/>
+                    {!isLiked?<img src={btnLike} alt="button" onClick={()=>setIsLiked(true)||addToLike(props.videoCollection,token)}/>:<img src={btnLikeDone} alt="button" />}
                     <img src={btndelete} alt="button" onClick={deleteFromList}/>
-                    {!isLiked?<img src={btnLikeDone} alt="button" onClick={()=>setIsLiked(true) || deleteFromList()}/>:<img src={btnLike} alt="button" />}
                 </div>
             </div>
             </div>
@@ -33,4 +46,4 @@ const LikeCard = (props) => {
   )
 }
 
-export default LikeCard
+export default WatchLaterCard
