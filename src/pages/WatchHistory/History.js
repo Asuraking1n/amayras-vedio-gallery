@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link ,NavLink} from "react-router-dom";
 import HistoryCard from "../../components/cards/historyCard/HistoryCard";
 import Clear from "../../images/clear.png";
 import "./history.css";
@@ -27,18 +27,18 @@ const History = () => {
                             <img src={Clear} alt="cancel" onClick={clearHistory} />
                         </div>
                         <div className="vediolisting-category">
-                            <Link to="/vedios" className="link">
+                            <NavLink to="/vedios" className="link" style={({ isActive }) => ({ color: isActive ? '#dc493a' : '#fff' })}>
                                 <span>All</span>
-                            </Link>
-                            <Link to="/history" className="link">
+                            </NavLink>
+                            <NavLink to="/history" className="link" style={({ isActive }) => ({ color: isActive ? '#dc493a' : '#fff' })}>
                                 <span>History</span>
-                            </Link>
-                            <Link to="/liked" className="link">
+                            </NavLink>
+                            <NavLink to="/liked" className="link" style={({ isActive }) => ({ color: isActive ? '#dc493a' : '#fff' })}>
                             <span>Liked Videos</span>
-                            </Link>
-                            <Link to="/playlist" className="link">
+                            </NavLink>
+                            <NavLink to="/playlist" className="link" style={({ isActive }) => ({ color: isActive ? '#dc493a' : '#fff' })}>
                             <span>PlayList</span>
-                            </Link>
+                            </NavLink>
                             
                         </div>
                         <div className="vedio-cards-cont">
