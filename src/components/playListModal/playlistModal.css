@@ -1,0 +1,48 @@
+.modal-overlay{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.199);
+    z-index: 120000000000;
+    display: flex;
+    align-items:center ;
+    justify-content: center;
+}
+.p-modal-cont{
+    height: 20rem;
+    width: 30rem;
+    background-color: rgb(27, 27, 27);
+    padding: 1rem;
+}
+.add-new-list {
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #fff;
+}
+.add-new-list input{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.add-new-list img{
+    height: 1rem;
+    margin: 0 1rem;
+}
+hr{
+    margin-top: 1rem;
+}
+.playlist-card-cont{
+    width: 100%;
+    height: 15rem;
+    padding: 1rem;
+    overflow: auto;
+}

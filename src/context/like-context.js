@@ -3,13 +3,13 @@ import axios from 'axios'
 import { useLocation } from "react-router-dom";
 
 const LikeContext = createContext()
-let token = localStorage.getItem('token')
+
 const LikeProvider=({children})=>{
     const [LikedData,setLikedData] = useState([])
     const location = useLocation()
+    let token = localStorage.getItem('token')
     useEffect(()=>{
         if (token) {
-            console.log(token);
                 axios.get(`/api/user/likes`, {
                 headers: {
                     authorization: token 
