@@ -1,30 +1,20 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
+
+import React from "react";
 import { Link } from "react-router-dom";
-import HistoryCard from "../../components/cards/historyCard/HistoryCard";
-import Clear from "../../images/clear.png";
-import "./history.css";
-import { useHistory } from "../../context/history-context";
-const History = () => {
-    const { historyData, setHistoryData } = useHistory();
+// import './liked.css'
+import { usePlayList } from "../../context/playlist-context";
+import PlayListCard from "../../components/cards/playlistCard/PlayListCard";
+const PlayList = () => {
+ const {ListData} = usePlayList()
     let token = localStorage.getItem("token");
-
-    const clearHistory = () => {
-        axios
-            .delete("/api/user/history/all", {
-                headers: { authorization: token },
-            })
-            .then((res) => setHistoryData(res.data.history));
-    };
-
+    
     return (
         <>
             <div className="vedioListing-cont-sec history-sec-con">
                 {token ? (
                     <>
                         <div className="vediolisting-heading history-heading">
-                            Watch History
-                            <img src={Clear} alt="cancel" onClick={clearHistory} />
+                            PlayList
                         </div>
                         <div className="vediolisting-category">
                             <Link to="/vedios" className="link">
@@ -39,17 +29,17 @@ const History = () => {
                             <Link to="/playlist" className="link">
                             <span>PlayList</span>
                             </Link>
-                            
                         </div>
                         <div className="vedio-cards-cont">
-                            {historyData.length > 0 ? (
-                                historyData.map((video, id) => {
-                                    return <HistoryCard key={id} videoCollection={video} />;
+                            {ListData.length > 0 ? 
+                            (
+                                ListData.map((video, id) => {
+                                    return <PlayListCard key={id} list={video} />;
                                 })
                             ) : (
                                 <>
                                     <div className="blank-load">
-                                        <span>Why Havn't You Watched SomeThing ? </span>
+                                        <span>Don't you want to add SomeThing  ? </span>
                                         <Link to="/vedios">
                                             <button>Explore</button>
                                         </Link>
@@ -65,7 +55,8 @@ const History = () => {
                 ) : (
                     <>
                         <div className="login-user">
-                            LogIn To Watch What you watched till now 😃
+                            
+                            LogIn To Create your very own playList 😃
                         </div>
                     </>
                 )}
@@ -74,4 +65,4 @@ const History = () => {
     );
 };
 
-export default History;
+export default PlayList;

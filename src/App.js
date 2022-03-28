@@ -11,6 +11,8 @@ import Signup from './pages/signup/Signup'
 import Mockman from "mockman-js";
 import History from "./pages/WatchHistory/History";
 import Liked from "./pages/LikedVedio/Liked";
+import PlayList from "./pages/playList/PlayList";
+import SinglePlayList from "./pages/playList/SinglePlayList";
 function App() {
   return (
     <>
@@ -23,6 +25,8 @@ function App() {
             <Route  path="/mockman" element={<Mockman />} />
             <Route  path="/history" element={<History/>} />
             <Route  path="/liked" element={<Liked/>} />
+            <Route  path="/playlist" element={<PlayList/>} />
+            <Route  path="/playlist/:id" element={<SinglePlayList/>} />
     </Routes>
     </>
   );

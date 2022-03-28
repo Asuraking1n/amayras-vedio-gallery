@@ -26,7 +26,9 @@ const Liked = () => {
                             <Link to="/liked" className="link">
                             <span>Liked Videos</span>
                             </Link>
+                            <Link to="/playlist" className="link">
                             <span>PlayList</span>
+                            </Link>
                         </div>
                         <div className="vedio-cards-cont">
                             {LikedData.length > 0 ? 

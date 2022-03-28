@@ -5,8 +5,11 @@ import axios from "axios";
 import like from '../../../images/like.png'
 import likeDone from '../../../images/like-done.png'
 import share from '../../../images/share.png'
+import playlist from '../../../images/playlist.png'
+import PlaylistModal from "../../playListModal/PlaylistModal";
 const VedioCard = (props) => {
   const [isModal, setIsModal] = useState(false);
+  const [PlayisModal, setIsPlayModal] = useState(false);
   const [isLiked,setIsLiked] = useState(false)
   let token = localStorage.getItem("token");
 
@@ -20,8 +23,6 @@ const addTohistory = async(video,token) => {
                 authorization: token 
             }
         })
-    }else{
-        alert('PLEASE LOGIN')
     }
 }
 
@@ -63,6 +64,9 @@ const addToLike = async(video,token) => {
             <div className="vedio-btn-sec">
               <div className="vedio-btn-circle-cont">{isLiked?<img src={likeDone} alt="like" onClick={()=>setIsLiked(false)} />:<img src={like} alt="like" onClick={()=>setIsLiked(true) || addToLike(props.vedioData,token)}/>}</div>
               <div className="vedio-btn-circle-cont"><img src={share} alt="share" /></div>
+              <div className="vedio-btn-circle-cont"><img src={playlist} alt="list" onClick={()=>setIsPlayModal(true)}/></div>
+              {PlayisModal?<PlaylistModal vedioData={props.vedioData} closeModal={(IsPlayModal)=>setIsPlayModal(IsPlayModal)}/>:null}
+              
             </div>
           </div>
         </div>

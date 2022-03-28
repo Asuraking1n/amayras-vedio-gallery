@@ -4,10 +4,11 @@ import { useLocation } from "react-router-dom";
 const HistoryContext = createContext()
 
 
-let token = localStorage.getItem('token')
+
 const HistoryProvider = ({ children }) => {
     const [historyData,setHistoryData] = useState([])
     const location = useLocation()
+    let token = localStorage.getItem('token')
     useEffect(()=>{
         if(token){
             axios.get('/api/user/history',{
