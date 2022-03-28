@@ -47,7 +47,7 @@
     <li>View Video</li>
     <li>Like Video</li>
     <li>View, Delete Video History</li>
-    <li>Crate,Delete PlayList</li>
+    <li>Create,Delete PlayList</li>
     <li>Add Video to playlist</li>
   </ol>
 </details>
@@ -62,7 +62,7 @@
 ![](screenshots/4.PNG)
 ![](screenshots/5PNG)
 
-There are many great video aries ; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a Library on fashion it'll be the last one you ever need -- I think this is it.
+There are many great video Galleries ; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a Gallery on fashion it'll be the last one you ever need -- I think this is it.
 
 Here's why:
 * Your time should be focused on only something you really need. A project that solves a problem and helps others.
