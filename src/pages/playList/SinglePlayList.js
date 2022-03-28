@@ -19,7 +19,7 @@ const SinglePlayList = () => {
                 {token ? (
                     <>
                         <div className="vediolisting-heading history-heading">
-                            PlayList
+                            PlayList Videos
                         </div>
                         <div className="vediolisting-category">
                             <Link to="/vedios" className="link">

@@ -3,12 +3,11 @@ import './playlistModal.css'
 import newplaylist from '../../images/newPlaylist.png'
 import cancel from '../../images/clear.png'
 import PlayListCard from '../cards/playlistCard/PlayListCard'
-import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { usePlayList } from '../../context/playlist-context'
 const PlaylistModal = (props) => {
-    const navigate = useNavigate()
-    const {ListData} = usePlayList()
+
+    const {ListData,setListData} = usePlayList()
     const [listInput,setListinput] = useState('Add New PlayList')
     let token = localStorage.getItem("token");
     const creatNewPlayList=()=>{
@@ -19,7 +18,7 @@ const PlaylistModal = (props) => {
                 headers: {
                     authorization: token 
                 }
-            }).then((res)=>res.status===201?navigate('/playlist'):alert('Please Refresh, Some Error Occurred'))
+            }).then((res)=>res.status===201?setListData(res.data.playlists) :alert('Please Refresh, Some Error Occurred'))
         }
     }
 

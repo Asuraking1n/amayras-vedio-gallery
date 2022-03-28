@@ -1,34 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import "./playcard.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import playList from "../../../images/playlist.png";
 import delet from '../../../images/delete.png'
-import add from '../../../images/add.png'
-import checked from '../../../images/checked.png'
+
 import { usePlayList } from "../../../context/playlist-context";
 
-const PlayListCard = (props) => {
-    const [isChecked, setIsChecked] = useState(false)
+const PlayListDisplayCard = (props) => {
+
     const {setListData} = usePlayList()
-    const navigate = useNavigate();
+
     let token = localStorage.getItem("token");
 
-    const postVedioToPlayList = (video) => {
-        axios
-            .post(
-                `/api/user/playlists/${props.list._id}`,
-                { video },
-                {
-                    headers: { authorization: token },
-                }
-            )
-            .then((res) =>
-                res.status === 201
-                    ? navigate("/playlist")
-                    : alert("Please Refresh, Some Error Occurred")
-            );
-    };
 
     const deletePlayList = () => {
         axios
@@ -64,13 +48,12 @@ const PlayListCard = (props) => {
                     </div>
                     <div className="p-title">{props.list.title}</div>
                 </div>
-                <div className="add-video-sec">
+                <div className="add-video-sec playDlt">
                     <img src={delet} alt="dlt" onClick={deletePlayList}/>
-                    <img src={!isChecked ? add : checked} alt="check" onClick={() => setIsChecked(true) || postVedioToPlayList(props.vedioData)} />
                 </div>
             </div>
         </>
     );
 };
 
-export default PlayListCard;
+export default PlayListDisplayCard;

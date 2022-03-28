@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 // import './liked.css'
 import { usePlayList } from "../../context/playlist-context";
-import PlayListCard from "../../components/cards/playlistCard/PlayListCard";
+import PlayListDisplayCard from "../../components/cards/playlistCard/PlayListDisplayCard";
 const PlayList = () => {
  const {ListData} = usePlayList()
     let token = localStorage.getItem("token");
@@ -34,7 +34,7 @@ const PlayList = () => {
                             {ListData.length > 0 ? 
                             (
                                 ListData.map((video, id) => {
-                                    return <PlayListCard key={id} list={video} />;
+                                    return <PlayListDisplayCard key={id} list={video} />;
                                 })
                             ) : (
                                 <>
