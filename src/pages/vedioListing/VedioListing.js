@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import VedioCard from "../../components/cards/vedioCards/VedioCard";
-import "./vediolisting.css";
 import { useVedioData } from "../../context/vedio-data-context";
 import { NavLink } from "react-router-dom";
+import "./vediolisting.css";
 const VedioListing = () => {
   const { vedio } = useVedioData();
-
+  const [searchVideo, setSearchVideo] = useState('')
   return (
     <>
       <div className="vedioListing-cont-sec">
         <div className="vediolisting-heading">Gallery</div>
+        <div className="search-field">
+          <input type="text" onChange={(e) => setSearchVideo(e.target.value)} placeholder='SEARCH VIDEO BY TITLE'/>
+        </div>
         <div className="vediolisting-category">
           <NavLink
             to="/vedios"
@@ -56,11 +59,14 @@ const VedioListing = () => {
                 className="loadImg"
               />
             </>
-          ) : (
-            vedio.map((val, index) => {
-              return <VedioCard key={index} vedioData={val} />;
-            })
-          )}
+          ) :
+            (vedio.filter((filterData) => filterData.title.toLowerCase().includes(searchVideo.toLowerCase()) ? filterData : null)
+              .map((items, id) => {
+                return (
+                  <VedioCard key={id} vedioData={items} />
+                )
+              }))
+          }
         </div>
       </div>
     </>
