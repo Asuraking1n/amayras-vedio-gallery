@@ -60,6 +60,15 @@ const SinglePlayList = () => {
               >
                 <span>PlayList</span>
               </NavLink>
+              <NavLink
+                to="/watchlater"
+                className="link"
+                style={({ isActive }) => ({
+                  color: isActive ? "#dc493a" : "#fff",
+                })}
+              >
+                <span>Watch Later</span>
+              </NavLink>
             </div>
             <div className="vedio-cards-cont">
               {listVideo.length > 0 ? (

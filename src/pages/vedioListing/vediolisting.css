@@ -1,4 +1,5 @@
 .vedioListing-cont-sec{
+    min-height: 100vh;
     height: auto;
     width: 100%;
     overflow: hidden;
@@ -30,6 +31,20 @@
     cursor: pointer;
     font-weight: 600;
 }
+.search-field{
+    width: 100%;
+    padding: 3rem 2rem;
+}
+.search-field input{
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    color: #dc493a;
+    letter-spacing: 1px;
+    border-radius: 25px;
+    width: 35rem;
+}
 .link{
     text-decoration: none;
     color: #fff;
@@ -52,5 +67,8 @@
     }
     .vediolisting-category span:nth-child(4n+1){
         display: none;
+    }
+    .search-field input{
+        width: 100%;
     }
 }

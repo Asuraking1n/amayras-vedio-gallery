@@ -5,12 +5,15 @@ import axios from "axios";
 import like from '../../../images/like.png'
 import likeDone from '../../../images/like-done.png'
 import share from '../../../images/share.png'
+import checked from '../../../images/checked.png'
+import clock from '../../../images/clock.png'
 import playlist from '../../../images/playlist.png'
 import PlaylistModal from "../../playListModal/PlaylistModal";
 import copy from '../../../images/copy.png'
 const VedioCard = (props) => {
   const [isModal, setIsModal] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
+  const [isWatched, setIsWatched] = useState(false);
   const [PlayisModal, setIsPlayModal] = useState(false);
   const [isLiked,setIsLiked] = useState(false)
   let token = localStorage.getItem("token");
@@ -25,6 +28,16 @@ const addTohistory = async(video,token) => {
             }
         })
     }
+}
+
+const addToWatchLater = async(video,token) => {
+  if (token) {
+      return await axios.post(`/api/user/watchlater`,{video}, {
+          headers: {
+              authorization: token 
+          }
+      }).then((res=>res.status === 201&&setIsWatched(true)))
+  }
 }
 
 const addToLike = async(video,token) => {
@@ -67,6 +80,7 @@ const addToLike = async(video,token) => {
               <div className="vedio-btn-circle-cont" onClick={() => {navigator.clipboard.writeText(`https://www.youtube.com/embed/${props.vedioData._id}`) && setIsCopied(true)} }><img src={!isCopied?share:copy} alt="share" /></div>
               <div className="vedio-btn-circle-cont"><img src={playlist} alt="list" onClick={()=>setIsPlayModal(true)}/></div>
               {PlayisModal?<PlaylistModal vedioData={props.vedioData} closeModal={(IsPlayModal)=>setIsPlayModal(IsPlayModal)}/>:null}
+              <div className="vedio-btn-circle-cont"><img src={!isWatched?clock:checked} alt="watchlater" onClick={()=>addToWatchLater(props.vedioData,token)}/></div>
               
             </div>
           </div>
