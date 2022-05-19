@@ -5,7 +5,8 @@ import btnLikeDone  from '../../../images/like-done.png'
 import btndelete from '../../../images/delete.png'
 import { useWatchLater } from '../../../context/watchlater-context'
 import axios from 'axios'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 const WatchLaterCard = (props) => {
   const [isLiked,setIsLiked] = useState(false)
   const {setWatchLaterData} = useWatchLater()
@@ -15,6 +16,7 @@ const WatchLaterCard = (props) => {
       headers:{authorization: token}
   }).then((res)=>setWatchLaterData(res.data.watchlater) )
   }
+  const notify = (msg) => toast(msg);
   const addToLike = async(video,token) => {
     if (token) {
         return await axios.post(`/api/user/likes`,{video}, {
@@ -23,12 +25,12 @@ const WatchLaterCard = (props) => {
             }
         })
     }else{
-        alert('PLEASE LOGIN')
+        notify('PLEASE LOGIN')
     }
   }
   
   return (
-    <>
+    <><ToastContainer />
         <div className="history-card-cont">
             <img src={props.videoCollection.imgSrc} className='bg-image'/>
             <div className="img-black-overlay">

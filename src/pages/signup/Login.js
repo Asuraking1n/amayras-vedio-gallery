@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 import './signup.css'
 const Login = () => {
   const navigate = useNavigate()
@@ -12,6 +14,7 @@ const Login = () => {
       email: "nishant@gmail.com",
       pass: "nishant"
     }
+    const notify = (msg) => toast(msg);
     const addDummyUser=(e)=>{
       e.preventDefault()
       setUserCred(dummyUser)
@@ -31,13 +34,14 @@ const Login = () => {
         })
         .then((res)=>{
           localStorage.setItem('token',res.data.encodedToken)
-          navigate('/')
+          navigate('/vedios')
         })
-        .catch((e)=>alert("USER NOT FOUND"))
+        .catch((e)=>notify("USER NOT FOUND"))
   
     }
   return (
-    <>
+    <><ToastContainer />
+    
         <div className="vedioListing-cont-sec login-sec">
         <div className="vediolisting-heading login-heading">Log In</div>
         <div className="login-sec-cont">

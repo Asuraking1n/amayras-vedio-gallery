@@ -10,6 +10,8 @@ import clock from '../../../images/clock.png'
 import playlist from '../../../images/playlist.png'
 import PlaylistModal from "../../playListModal/PlaylistModal";
 import copy from '../../../images/copy.png'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 const VedioCard = (props) => {
   const [isModal, setIsModal] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
@@ -17,7 +19,7 @@ const VedioCard = (props) => {
   const [PlayisModal, setIsPlayModal] = useState(false);
   const [isLiked,setIsLiked] = useState(false)
   let token = localStorage.getItem("token");
-
+  const notify = (msg) => toast(msg);
 
 
 const addTohistory = async(video,token) => {
@@ -48,7 +50,7 @@ const addToLike = async(video,token) => {
           }
       })
   }else{
-      alert('PLEASE LOGIN')
+    notify('PLEASE LOGIN')
   }
 }
 
@@ -56,7 +58,7 @@ const addToLike = async(video,token) => {
 
 
   return (
-    <>
+    <><ToastContainer />
       {isModal ? (
         <Modal
           openModal={(isModal) => setIsModal(isModal)}

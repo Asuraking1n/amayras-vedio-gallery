@@ -1,6 +1,9 @@
 import axios from 'axios'
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+
 import './signup.css'
 const Login = () => {
   const navigate = useNavigate()
@@ -9,7 +12,7 @@ const Login = () => {
         pass:'',
         cpass:''
     })
-
+    const notify = (msg) => toast(msg);
     const dataHandler=(e)=>{
         let name = e.target.name
         let value = e.target.value
@@ -27,13 +30,13 @@ const Login = () => {
           .then(res=>{
             localStorage.setItem('token',res.data.encodedToken)
             navigate('/')
-          }).catch((e)=>alert('got api error',e))
+          }).catch((e)=>notify('got api error'))
       }else{
-          alert("PASSWORD DONT MATCH")
+        notify("PASSWORD DONT MATCH")
       }
     }
   return (
-    <>
+    <><ToastContainer />
         <div className="vedioListing-cont-sec signup-sec">
         <div className="vediolisting-heading login-heading">Sign Up</div>
         <div className="login-sec-cont">

@@ -7,13 +7,14 @@ import delet from '../../../images/delete.png'
 import add from '../../../images/add.png'
 import checked from '../../../images/checked.png'
 import { usePlayList } from "../../../context/playlist-context";
-
+import 'react-toastify/dist/ReactToastify.css'
+import './signup.css'
 const PlayListCard = (props) => {
     const [isChecked, setIsChecked] = useState(false)
     const {setListData} = usePlayList()
     const navigate = useNavigate();
     let token = localStorage.getItem("token");
-
+    const notify = (msg) => toast(msg);
     const postVedioToPlayList = (video) => {
         axios
             .post(
@@ -26,7 +27,7 @@ const PlayListCard = (props) => {
             .then((res) =>
                 res.status === 201
                     ? navigate("/playlist")
-                    : alert("Please Refresh, Some Error Occurred")
+                    : notify("Please Refresh, Some Error Occurred")
             );
     };
 
@@ -44,7 +45,7 @@ const PlayListCard = (props) => {
     };
 
     return (
-        <>
+        <><ToastContainer />
             <div className="playlist-section">
                 <div className="playList-card-cont">
                     <Link to={`/playlist/` + props.list._id}>

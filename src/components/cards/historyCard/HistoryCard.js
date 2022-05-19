@@ -3,7 +3,9 @@ import btnShare from '../../../images/share.png'
 import btnLike from '../../../images/like.png'
 import btnLikeDone  from '../../../images/like-done.png'
 import btndelete from '../../../images/delete.png'
-import { useHistory } from '../../../context/history-context'
+import { useHistory } from '../../../context/history-context' 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 import axios from 'axios'
 import './historycard.css'
 const HistoryCard = (props) => {
@@ -15,7 +17,7 @@ const HistoryCard = (props) => {
       headers:{authorization: token}
   }).then((res)=>setHistoryData(res.data.history))
   }
-
+  const notify = (msg) => toast(msg);
   const addToLike = async(video,token) => {
     if (token) {
         return await axios.post(`/api/user/likes`,{video}, {
@@ -24,12 +26,12 @@ const HistoryCard = (props) => {
             }
         })
     }else{
-        alert('PLEASE LOGIN')
+        notify('PLEASE LOGIN')
     }
   }
   
   return (
-    <>
+    <><ToastContainer />
         <div className="history-card-cont">
             <img src={props.videoCollection.imgSrc} className='bg-image'/>
             <div className="img-black-overlay">
