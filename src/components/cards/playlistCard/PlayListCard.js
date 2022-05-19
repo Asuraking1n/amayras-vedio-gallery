@@ -8,7 +8,7 @@ import add from '../../../images/add.png'
 import checked from '../../../images/checked.png'
 import { usePlayList } from "../../../context/playlist-context";
 import 'react-toastify/dist/ReactToastify.css'
-import './signup.css'
+import { ToastContainer, toast } from 'react-toastify';
 const PlayListCard = (props) => {
     const [isChecked, setIsChecked] = useState(false)
     const {setListData} = usePlayList()
