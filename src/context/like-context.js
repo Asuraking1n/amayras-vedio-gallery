@@ -5,9 +5,13 @@ import { useLocation } from "react-router-dom";
 const LikeContext = createContext()
 
 const LikeProvider=({children})=>{
+
     const [LikedData,setLikedData] = useState([])
+
     const location = useLocation()
+
     let token = localStorage.getItem('token')
+    
     useEffect(()=>{
         if (token) {
                 axios.get(`/api/user/likes`, {
