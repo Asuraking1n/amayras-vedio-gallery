@@ -1,11 +1,11 @@
 import React from "react";
-import axios from "axios";
 import "./playcard.css";
 import { Link } from "react-router-dom";
 import playList from "../../../images/playlist.png";
 import delet from '../../../images/delete.png'
 
 import { usePlayList } from "../../../context/playlist-context";
+import { deleteFromListService } from "../../../services/deleteFromListService";
 
 const PlayListDisplayCard = (props) => {
 
@@ -14,17 +14,9 @@ const PlayListDisplayCard = (props) => {
     let token = localStorage.getItem("token");
 
 
-    const deletePlayList = () => {
-        axios
-            .delete(
-                `/api/user/playlists/${props.list._id}`,
-                {
-                    headers: { authorization: token },
-                }
-            )
-            .then((res) =>
-            setListData(res.data.playlists)
-            );
+    const deletePlayList = async() => {
+        const res = await deleteFromListService('playlists',props.list._id,token)
+        setListData(res.data.playlists)
     };
 
     return (

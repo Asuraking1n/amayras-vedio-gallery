@@ -1,27 +1,30 @@
 import React,{useState} from 'react'
 import btnShare from '../../../images/share.png'
 import btndelete from '../../../images/delete.png'
-import axios from 'axios'
+import { deleteFromListService } from '../../../services/deleteFromListService'
 import btnLike from '../../../images/like.png'
 import btnLikeDone  from '../../../images/like-done.png'
 import { useLike } from '../../../context/like-context'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const LikeCard = (props) => {
   const {setLikedData} = useLike()
   const [isLiked,setIsLiked] = useState(false)
   let token = localStorage.getItem('token')
-  const deleteFromList=()=>{
-    axios.delete(`/api/user/likes/${props.videoCollection._id}`,{
-      headers:{authorization: token}
-  }).then((res)=>setLikedData(res.data.likes) )
-  }
+  const notify = (msg) => toast(msg);
+  const deleteFromList = async() => {
+    const res = await deleteFromListService('likes',props.videoCollection._id,token)
+    setLikedData(res.data.likes)
+};
+
   return (
-    <>
+    <><ToastContainer />
         <div className="history-card-cont">
             <img src={props.videoCollection.imgSrc} className='bg-image'/>
             <div className="img-black-overlay">
             <div className="h-card-overlay">
                 <div className="h-card-buttons-cont">
-                    <img src={btnShare} alt="button" onClick={navigator.clipboard.writeText(`https://www.youtube.com/embed/${props.videoCollection._id}`)}/>
+                    <img src={btnShare} alt="button" onClick={()=>navigator.clipboard.writeText(`https://www.youtube.com/embed/${props.videoCollection._id}`) && notify('Link Copied')}/>
                     <img src={btndelete} alt="button" onClick={deleteFromList}/>
                     {!isLiked?<img src={btnLikeDone} alt="button" onClick={()=>setIsLiked(true) || deleteFromList()}/>:<img src={btnLike} alt="button" />}
                 </div>

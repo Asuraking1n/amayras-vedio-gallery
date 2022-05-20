@@ -11,7 +11,10 @@ import playlist from '../../../images/playlist.png'
 import PlaylistModal from "../../playListModal/PlaylistModal";
 import copy from '../../../images/copy.png'
 import { ToastContainer, toast } from 'react-toastify';
+import addToLikeService from '../../../services/addToLikeService'
 import 'react-toastify/dist/ReactToastify.css'
+import addToWatchLaterService from "../../../services/addToWatchLaterService";
+import { addTohistoryService } from "../../../services/addTohistoryService";
 const VedioCard = (props) => {
   const [isModal, setIsModal] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
@@ -21,38 +24,37 @@ const VedioCard = (props) => {
   let token = localStorage.getItem("token");
   const notify = (msg) => toast(msg);
 
-
-const addTohistory = async(video,token) => {
+  const addTohistory = async (video, token) => {
     if (token) {
-        return await axios.post(`/api/user/history`,{video}, {
-            headers: {
-                authorization: token 
-            }
-        })
+      await addTohistoryService(video, token)
+    } else {
+        notify("PLEASE LOGIN");
     }
-}
+  };
+  
 
-const addToWatchLater = async(video,token) => {
-  if (token) {
-      return await axios.post(`/api/user/watchlater`,{video}, {
-          headers: {
-              authorization: token 
-          }
-      }).then((res=>res.status === 201&&setIsWatched(true)))
-  }
-}
 
-const addToLike = async(video,token) => {
+const  addToWatchLater = async (video, token) => {
   if (token) {
-      return await axios.post(`/api/user/likes`,{video}, {
-          headers: {
-              authorization: token 
-          }
-      })
-  }else{
-    notify('PLEASE LOGIN')
+      const res = await addToWatchLaterService(video,token)
+      if(res.status===201){
+        setIsWatched(true)
+      }
+  } else {
+      notify("PLEASE LOGIN");
   }
-}
+};
+
+
+
+const addToLike = async (video, token) => {
+  if (token) {
+      await addToLikeService(video, token)
+  } else {
+      notify("PLEASE LOGIN");
+  }
+};
+
 
 
 

@@ -1,9 +1,10 @@
-import axios from 'axios'
+
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import './signup.css'
+import { LoginAPIservice } from '../../services/LoginAPIservice';
 const Login = () => {
   const navigate = useNavigate()
     const [userCred,setUserCred] = useState({
@@ -26,18 +27,18 @@ const Login = () => {
     }
  
 
-    const logInUser=(e)=>{
+    const logInUser=async(e)=>{
       e.preventDefault();
-      axios.post('/api/auth/login',{
-          email:userCred.email,
-          password:userCred.pass
-        })
-        .then((res)=>{
+      try {
+        const res = await LoginAPIservice(userCred)
+        if(res.status === 200){
           localStorage.setItem('token',res.data.encodedToken)
           navigate('/vedios')
-        })
-        .catch((e)=>notify("USER NOT FOUND"))
-  
+        }
+      } catch (error) {
+        notify('User Not Found Sign UP first')
+        setTimeout(()=>navigate('/signup'),3000)
+      }
     }
   return (
     <><ToastContainer />

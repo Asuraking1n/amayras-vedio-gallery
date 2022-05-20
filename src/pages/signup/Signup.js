@@ -1,8 +1,9 @@
-import axios from 'axios'
+
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
+import { SignupAPIservice } from '../../services/SignupAPIservice';
 
 import './signup.css'
 const Login = () => {
@@ -21,18 +22,15 @@ const Login = () => {
     const logInUser=async(e)=>{
       e.preventDefault()
       if(userCred.pass === userCred.cpass){
-        await axios.post('/api/auth/signup',{
-            firstName:'user',
-            lastName:'test',
-            email:userCred.email,
-            password:userCred.password
-          })
-          .then(res=>{
-            localStorage.setItem('token',res.data.encodedToken)
-            navigate('/')
-          }).catch((e)=>notify('got api error'))
+        try {
+          const res = await SignupAPIservice(userCred)
+          localStorage.setItem('token',res.data.encodedToken)
+          navigate('/')
+        } catch (error) {
+          notify('Got API Error, Refresh and retry')
+        }
       }else{
-        notify("PASSWORD DONT MATCH")
+        notify("PASSWORD DON'T MATCH")
       }
     }
   return (
