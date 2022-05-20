@@ -1,9 +1,11 @@
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/homePage/HomePage";
+import { useState,useEffect } from "react";
 import {
   Routes,
-  Route
+  Route,
+  useLocation
 } from "react-router-dom";
 import VedioListing from "./pages/vedioListing/VedioListing";
 import Login from "./pages/signup/Login";
@@ -12,9 +14,16 @@ import Mockman from "mockman-js";
 import History from "./pages/WatchHistory/History";
 import Liked from "./pages/LikedVedio/Liked";
 import PlayList from "./pages/playList/PlayList";
+import Profile from './pages/profilepage/Profile'
 import SinglePlayList from "./pages/playList/SinglePlayList";
 import WatchLater from "./pages/watchlater/WatchLater";
 function App() {
+  const [token,setToken] = useState('')
+  const location = useLocation()
+  useEffect(() => {
+    setToken(localStorage.getItem('token'))
+  }, [location])
+  
   return (
     <>
     <Navbar/>
@@ -29,6 +38,7 @@ function App() {
             <Route  path="/playlist" element={<PlayList/>} />
             <Route  path="/playlist/:id" element={<SinglePlayList/>} />
             <Route  path="/watchlater" element={<WatchLater/>} />
+            <Route  path="/profile" element={token?<Profile/>:<Login/>} />
     </Routes>
     </>
   );

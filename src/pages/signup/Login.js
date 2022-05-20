@@ -33,6 +33,7 @@ const Login = () => {
         const res = await LoginAPIservice(userCred)
         if(res.status === 200){
           localStorage.setItem('token',res.data.encodedToken)
+          localStorage.setItem('name',res.data.foundUser.firstName)
           navigate('/vedios')
         }
       } catch (error) {

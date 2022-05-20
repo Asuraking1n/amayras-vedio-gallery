@@ -28,6 +28,7 @@
 .nav-logo{
     text-decoration: none;
     color: #fff;
+    text-transform: capitalize;
 }
 .nav-routes span{
     margin: 0 1rem;
@@ -42,6 +43,21 @@
 .up-arrow{
     height: 1.5rem;
     display: none;
+}
+.profile-avtar{
+    height: 3rem;
+    width: 3rem;
+    margin-right: 1rem;
+    border-radius: 50%;
+    background-color: #dc493a;
+}
+.profile-avtar img{
+    height: 100%;
+    width: 100%;
+}
+.user-profile-section{
+    display: flex;
+    align-items: center;
 }
 @media (max-width: 480px)  {
     .nav-routes{
