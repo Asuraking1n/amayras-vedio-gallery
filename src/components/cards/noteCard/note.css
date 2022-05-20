@@ -1,0 +1,31 @@
+.note-card-cont{
+    height: 5rem;
+    width: 100%;
+    color: white;
+    top: 0;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.note-card-cont input{
+    height: 60%;
+    width: 60%;
+    padding:0 1rem;
+    outline: none;
+    background-color: #121212;
+    color: #dc493a;
+    border: none;
+    border-radius: 30px;
+}
+.note-card-cont button{
+    padding: 1rem 2rem;
+    border-radius: 40px;
+    cursor: pointer;
+    border: none;
+    color: #dc493a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: #121212;
+}

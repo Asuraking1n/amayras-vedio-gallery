@@ -1,8 +1,9 @@
 import React, { useState} from "react";
 import "./vediocard.css";
 import Modal from "../../modal/Modal";
-import axios from "axios";
+import pencil from '../../../images/pencil.png'
 import like from '../../../images/like.png'
+import clear from '../../../images/clear.png'
 import likeDone from '../../../images/like-done.png'
 import share from '../../../images/share.png'
 import checked from '../../../images/checked.png'
@@ -17,6 +18,7 @@ import addToWatchLaterService from "../../../services/addToWatchLaterService";
 import { addTohistoryService } from "../../../services/addTohistoryService";
 import {useLike} from '../../../context/like-context'
 import { useWatchLater } from "../../../context/watchlater-context";
+import NoteCard from "../noteCard/NoteCard";
 const VedioCard = (props) => {
   const {LikedData} = useLike()
   const {WatchLaterData} = useWatchLater()
@@ -24,7 +26,9 @@ const VedioCard = (props) => {
   const [isCopied, setIsCopied] = useState(false);
   const [isWatched, setIsWatched] = useState(WatchLaterData.some((val)=>val._id === props.vedioData._id));
   const [PlayisModal, setIsPlayModal] = useState(false);
+  const [isModalNote, setisModalNote] = useState(false);
   const [isLiked,setIsLiked] = useState(LikedData.some((val)=>val._id === props.vedioData._id))
+  const [noteData,setNoteData] = useState(localStorage.getItem(`${props.vedioData._id}`))
   
   let token = localStorage.getItem("token");
   const notify = (msg) => toast(msg);
@@ -62,7 +66,6 @@ const addToLike = async (video, token) => {
 
 
 
-
   return (
     <><ToastContainer />
       {isModal ? (
@@ -78,6 +81,11 @@ const addToLike = async (video, token) => {
         }}
       >
         <div className="vedio-card-cont-overlay">
+        {noteData&&<div className="note-pad">
+        {noteData}  
+        <img src={clear} alt="clear" onClick={()=>setNoteData(localStorage.removeItem(`${props.vedioData._id}`))}/>
+        </div>}
+        
           <div className="vedio-title">{props.vedioData.title}</div>
           <div className="yellow-hover-overlay">
             <button className="veiw-vedio-btn" onClick={() => setIsModal(true) || addTohistory(props.vedioData,token)}>
@@ -89,7 +97,8 @@ const addToLike = async (video, token) => {
               <div className="vedio-btn-circle-cont"><img src={playlist} alt="list" onClick={()=>setIsPlayModal(true)}/></div>
               {PlayisModal?<PlaylistModal vedioData={props.vedioData} closeModal={(IsPlayModal)=>setIsPlayModal(IsPlayModal)}/>:null}
               <div className="vedio-btn-circle-cont"><img src={!isWatched?clock:checked} alt="watchlater" onClick={()=>addToWatchLater(props.vedioData,token)}/></div>
-              
+              <div className="vedio-btn-circle-cont"><img src={isModalNote?clear:pencil} alt="notes" onClick={()=> isModalNote ?setisModalNote(false):setisModalNote(true)}/></div>
+              {isModalNote&& <NoteCard videoID={props.vedioData._id} updateNote={noteData=>setNoteData(noteData)}/>}
             </div>
           </div>
         </div>
