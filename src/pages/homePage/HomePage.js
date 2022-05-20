@@ -17,13 +17,13 @@ const HomePage = () => {
                 <div className="compass-sec">
                     <img src={circlebg} alt="c" />
                     <div className="body-social-icon">
-                        <a href="#">
+                        <a href="https://www.linkedin.com/in/nishant-kumar-tiwari-253a46196/">
                             <img src={Linkedin} alt="linkedin" />
                         </a>
-                        <a href="#">
+                        <a href="https://www.instagram.com/error_404_unavilable/">
                             <img src={Instagram} alt="ig" />
                         </a>
-                        <a href="#">
+                        <a href="https://github.com/Asuraking1n/">
                             <img src={Github} alt="github" />
                         </a>
                     </div>
