@@ -9,8 +9,10 @@ import "react-toastify/dist/ReactToastify.css";
 import "./historycard.css";
 import addToLikeService from "../../../services/addToLikeService";
 import { deleteFromListService } from "../../../services/deleteFromListService";
+import { useLike } from "../../../context/like-context";
 const HistoryCard = (props) => {
-    const [isLiked, setIsLiked] = useState(false);
+    const {LikedData} = useLike()
+    const [isLiked, setIsLiked] = useState(LikedData.some((val)=>val._id === props.videoCollection._id))
     const { setHistoryData } = useHistory();
     let token = localStorage.getItem("token");
     const notify = (msg) => toast(msg);

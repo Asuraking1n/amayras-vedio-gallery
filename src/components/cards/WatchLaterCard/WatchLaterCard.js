@@ -8,8 +8,10 @@ import { deleteFromListService } from '../../../services/deleteFromListService'
 import addToLikeService from '../../../services/addToLikeService'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
+import { useLike } from '../../../context/like-context'
 const WatchLaterCard = (props) => {
-  const [isLiked,setIsLiked] = useState(false)
+  const {LikedData} = useLike()
+  const [isLiked,setIsLiked] = useState(LikedData.some((val)=>val._id === props.videoCollection._id))
   const {setWatchLaterData} = useWatchLater()
   let token = localStorage.getItem('token')
 

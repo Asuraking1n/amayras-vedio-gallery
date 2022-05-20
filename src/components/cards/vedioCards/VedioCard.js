@@ -15,12 +15,17 @@ import addToLikeService from '../../../services/addToLikeService'
 import 'react-toastify/dist/ReactToastify.css'
 import addToWatchLaterService from "../../../services/addToWatchLaterService";
 import { addTohistoryService } from "../../../services/addTohistoryService";
+import {useLike} from '../../../context/like-context'
+import { useWatchLater } from "../../../context/watchlater-context";
 const VedioCard = (props) => {
+  const {LikedData} = useLike()
+  const {WatchLaterData} = useWatchLater()
   const [isModal, setIsModal] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
-  const [isWatched, setIsWatched] = useState(false);
+  const [isWatched, setIsWatched] = useState(WatchLaterData.some((val)=>val._id === props.vedioData._id));
   const [PlayisModal, setIsPlayModal] = useState(false);
-  const [isLiked,setIsLiked] = useState(false)
+  const [isLiked,setIsLiked] = useState(LikedData.some((val)=>val._id === props.vedioData._id))
+  
   let token = localStorage.getItem("token");
   const notify = (msg) => toast(msg);
 
@@ -31,7 +36,6 @@ const VedioCard = (props) => {
         notify("PLEASE LOGIN");
     }
   };
-  
 
 
 const  addToWatchLater = async (video, token) => {
