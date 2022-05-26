@@ -28,7 +28,6 @@
     font-weight: 1000;
     line-height: 70px;
     letter-spacing: 1px;
-    cursor: pointer;
     z-index: 5;
 }
 .front-text span:nth-child(1){
