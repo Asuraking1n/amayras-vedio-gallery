@@ -4,8 +4,8 @@ import btnLike from "../../../images/like.png";
 import btnLikeDone from "../../../images/like-done.png";
 import btndelete from "../../../images/delete.png";
 import { useHistory } from "../../../context/history-context";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+
 import "./historycard.css";
 import addToLikeService from "../../../services/addToLikeService";
 import { deleteFromListService } from "../../../services/deleteFromListService";
@@ -33,7 +33,6 @@ const HistoryCard = (props) => {
 
     return (
         <>
-            <ToastContainer />
             <div className="history-card-cont">
                 <img src={props.videoCollection.imgSrc} className="bg-image" />
                 <div className="img-black-overlay">

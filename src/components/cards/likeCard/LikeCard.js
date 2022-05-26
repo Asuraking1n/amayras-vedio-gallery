@@ -5,8 +5,7 @@ import { deleteFromListService } from '../../../services/deleteFromListService'
 import btnLike from '../../../images/like.png'
 import btnLikeDone  from '../../../images/like-done.png'
 import { useLike } from '../../../context/like-context'
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import {  toast } from "react-toastify";
 const LikeCard = (props) => {
   const {setLikedData} = useLike()
   const [isLiked,setIsLiked] = useState(false)
@@ -18,7 +17,7 @@ const LikeCard = (props) => {
 };
 
   return (
-    <><ToastContainer />
+    <>
         <div className="history-card-cont">
             <img src={props.videoCollection.imgSrc} className='bg-image'/>
             <div className="img-black-overlay">

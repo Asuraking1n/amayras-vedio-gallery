@@ -6,7 +6,7 @@ import btndelete from '../../../images/delete.png'
 import { useWatchLater } from '../../../context/watchlater-context'
 import { deleteFromListService } from '../../../services/deleteFromListService'
 import addToLikeService from '../../../services/addToLikeService'
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import { useLike } from '../../../context/like-context'
 const WatchLaterCard = (props) => {
@@ -31,7 +31,7 @@ const WatchLaterCard = (props) => {
   };
 
   return (
-    <><ToastContainer />
+    <>
         <div className="history-card-cont">
             <img src={props.videoCollection.imgSrc} className='bg-image'/>
             <div className="img-black-overlay">

@@ -1,8 +1,6 @@
 
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'
 import { SignupAPIservice } from '../../services/SignupAPIservice';
 
 import './signup.css'
@@ -34,7 +32,7 @@ const Login = () => {
       }
     }
   return (
-    <><ToastContainer />
+    <>
         <div className="vedioListing-cont-sec signup-sec">
         <div className="vediolisting-heading login-heading">Sign Up</div>
         <div className="login-sec-cont">

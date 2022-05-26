@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import ReactTooltip from "react-tooltip";
 import "./playcard.css";
 import { deleteFromListService } from "../../../services/deleteFromListService";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,8 +8,7 @@ import delet from '../../../images/delete.png'
 import add from '../../../images/add.png'
 import checked from '../../../images/checked.png'
 import { usePlayList } from "../../../context/playlist-context";
-import 'react-toastify/dist/ReactToastify.css'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { postVideoToPlayListService } from "../../../services/postVideoToPlayListService";
 const PlayListCard = (props) => {
     const [isChecked, setIsChecked] = useState(false)
@@ -33,7 +32,7 @@ const PlayListCard = (props) => {
 
 
     return (
-        <><ToastContainer />
+        <>
             <div className="playlist-section">
                 <div className="playList-card-cont">
                     <Link to={`/playlist/` + props.list._id}>
@@ -54,9 +53,11 @@ const PlayListCard = (props) => {
                     <div className="p-title">{props.list.title}</div>
                 </div>
                 <div className="add-video-sec">
-                    <img src={delet} alt="dlt" onClick={deletePlayList}/>
-                    <img src={!isChecked ? add : checked} alt="check" onClick={() => setIsChecked(true) || postVedioToPlayList(props.vedioData)} />
+                    <img src={delet} alt="dlt" data-tip data-for="deleteTip" onClick={deletePlayList}/>
+                    <img src={!isChecked ? add : checked} data-tip data-for="videoaddTip" alt="check" onClick={() => setIsChecked(true) || postVedioToPlayList(props.vedioData)} />
                 </div>
+                <ReactTooltip id="deleteTip" place="right" effect="solid">Delete PlayList</ReactTooltip>
+                <ReactTooltip id="videoaddTip" place="right" effect="solid">Add Video To PlayList</ReactTooltip>
             </div>
         </>
     );

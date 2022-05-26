@@ -1,8 +1,7 @@
 
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'
+import { toast } from 'react-toastify';
 import './signup.css'
 import { LoginAPIservice } from '../../services/LoginAPIservice';
 const Login = () => {
@@ -15,7 +14,9 @@ const Login = () => {
       email: "nishant@gmail.com",
       pass: "nishant"
     }
-    const notify = (msg) => toast(msg);
+    const notify = (msg) => toast(msg,{
+      autoClose:1000
+    });
     const addDummyUser=(e)=>{
       e.preventDefault()
       setUserCred(dummyUser)
@@ -42,7 +43,7 @@ const Login = () => {
       }
     }
   return (
-    <><ToastContainer />
+    <>
     
         <div className="vedioListing-cont-sec login-sec">
         <div className="vediolisting-heading login-heading">Log In</div>
