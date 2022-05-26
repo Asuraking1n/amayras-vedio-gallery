@@ -6,6 +6,7 @@ const NoteCard = (props) => {
         localStorage.setItem(`${props.videoID}`,userText)
         setUserText('')
         props.updateNote(userText)
+        props.closeNote(false)
     }
   return (
     <>

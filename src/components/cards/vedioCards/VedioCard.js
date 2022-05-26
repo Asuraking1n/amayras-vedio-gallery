@@ -100,7 +100,7 @@ const VedioCard = (props) => {
               {PlayisModal ? <PlaylistModal vedioData={props.vedioData} closeModal={(IsPlayModal) => setIsPlayModal(IsPlayModal)} /> : null}
               <div className="vedio-btn-circle-cont" data-tip data-for="watchTip"><img src={!isWatched ? clock : checked} alt="watchlater" onClick={() => addToWatchLater(props.vedioData, token)} /></div>
               <div className="vedio-btn-circle-cont" data-tip data-for="noteTip"><img src={isModalNote ? clear : pencil} alt="notes" onClick={() => isModalNote ? setisModalNote(false) : setisModalNote(true)} /></div>
-              {isModalNote && <NoteCard videoID={props.vedioData._id} updateNote={noteData => setNoteData(noteData)} />}
+              {isModalNote && <NoteCard videoID={props.vedioData._id} updateNote={noteData => setNoteData(noteData)} closeNote={isModalNote=>setisModalNote(isModalNote)}/>}
               </>
               }
 

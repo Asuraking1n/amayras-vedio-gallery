@@ -71,7 +71,7 @@ const WatchLater = () => {
                 <img src="https://freefrontend.com/assets/img/css-loaders/loading.gif" alt="load" />
                 </div>
               :
-               WatchLaterData? (
+               (WatchLaterData.length>0? (
                  WatchLaterData.map((video, id) => {
                   return <WatchLaterCard key={id} videoCollection={video} />;
                 })
@@ -88,7 +88,7 @@ const WatchLater = () => {
                     />
                   </div>
                 </>
-              )
+              ))
               }
             </div>
           </>
