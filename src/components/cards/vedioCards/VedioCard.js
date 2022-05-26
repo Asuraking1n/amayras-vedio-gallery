@@ -13,7 +13,6 @@ import PlaylistModal from "../../playListModal/PlaylistModal";
 import copy from '../../../images/copy.png'
 import {  toast } from 'react-toastify';
 import addToLikeService from '../../../services/addToLikeService'
-import 'react-toastify/dist/ReactToastify.css'
 import addToWatchLaterService from "../../../services/addToWatchLaterService";
 import { addTohistoryService } from "../../../services/addTohistoryService";
 import { useLike } from '../../../context/like-context'

@@ -1,11 +1,15 @@
 import React from 'react'
+import { useClickOutSide } from '../../hook/useClickOutSide'
 import Cancel from '../../images/cancel.png'
 import './modal.css'
 const Modal = (props) => {
+  let domNode = useClickOutSide(()=>{
+    props.openModal(false)
+  })
   return (
     <>
         <div className='modal-sec' >
-        <div className="modal-cont">
+        <div className="modal-cont" ref={domNode}>
             <div className="modal-close">
                 <img src={Cancel} alt="cancel" onClick={()=>props.openModal(false)} />
             </div>

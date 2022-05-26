@@ -7,12 +7,15 @@ import axios from 'axios'
 import ReactTooltip from "react-tooltip";
 import { usePlayList } from '../../context/playlist-context'
 import { toast } from 'react-toastify';
+import { useClickOutSide } from '../../hook/useClickOutSide'
 const PlaylistModal = (props) => {
-
     const { ListData, setListData } = usePlayList()
     const [listInput, setListinput] = useState('')
     let token = localStorage.getItem("token");
     const notify = (msg) => toast(msg);
+    let domNode = useClickOutSide(()=>{
+        props.closeModal(false)
+    })
     const creatNewPlayList = async () => {
         if (token) {
             return axios.post(`/api/user/playlists`, {
@@ -29,8 +32,8 @@ const PlaylistModal = (props) => {
     const dataInList = ListData.some(val=>val.title === listInput)
     return (
         <>
-            <div className="modal-overlay">
-                <div className="p-modal-cont">
+            <div className="modal-overlay" >
+                <div className="p-modal-cont" ref={domNode}>
                     <div className="add-new-list">
                         <div>
                             <input type="text" placeholder='Add Name of New PlayList' value={listInput} onChange={(e) => setListinput(e.target.value)} />
