@@ -17,7 +17,7 @@ import PlayList from "./pages/playList/PlayList";
 import Profile from './pages/profilepage/Profile'
 import SinglePlayList from "./pages/playList/SinglePlayList";
 import WatchLater from "./pages/watchlater/WatchLater";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 function App() {
   const [token,setToken] = useState('')

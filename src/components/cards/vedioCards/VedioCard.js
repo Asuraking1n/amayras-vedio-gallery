@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./vediocard.css";
 import Modal from "../../modal/Modal";
 import pencil from '../../../images/pencil.png'

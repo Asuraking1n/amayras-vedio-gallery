@@ -15,6 +15,12 @@
     text-transform: uppercase;
     letter-spacing: 2px;
 }
+.load-img{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .blank-load button{
     position: absolute;
     top: 8rem;

@@ -1,14 +1,15 @@
-import axios from "axios";
+
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import HistoryCard from "../../components/cards/historyCard/HistoryCard";
 import WatchLaterCard from "../../components/cards/WatchLaterCard/WatchLaterCard";
 import { useWatchLater } from "../../context/watchlater-context";
 const WatchLater = () => {
   const { WatchLaterData } = useWatchLater();
   let token = localStorage.getItem("token");
-
-
+  const [loading,setLoading] = useState(true)
+  useEffect(()=>{
+    setTimeout(()=>setLoading(false),800)
+  },[])
   return (
     <>
       <div className="vedioListing-cont-sec history-sec-con">
@@ -65,7 +66,12 @@ const WatchLater = () => {
               </NavLink>
             </div>
             <div className="vedio-cards-cont">
-              { WatchLaterData? (
+              {loading?
+                <div className="load-img">
+                <img src="https://freefrontend.com/assets/img/css-loaders/loading.gif" alt="load" />
+                </div>
+              :
+               WatchLaterData? (
                  WatchLaterData.map((video, id) => {
                   return <WatchLaterCard key={id} videoCollection={video} />;
                 })
@@ -82,7 +88,8 @@ const WatchLater = () => {
                     />
                   </div>
                 </>
-              )}
+              )
+              }
             </div>
           </>
         ) : (

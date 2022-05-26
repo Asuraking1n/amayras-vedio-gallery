@@ -1,10 +1,14 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import {useState,useEffect} from "react";
+import {NavLink,Link  } from "react-router-dom";
 import "./liked.css";
 import LikeCard from "../../components/cards/likeCard/LikeCard";
 import { useLike } from "../../context/like-context";
 const Liked = () => {
   const { LikedData } = useLike();
+  const [loading,setLoading] = useState(true)
+  useEffect(()=>{
+    setTimeout(()=>setLoading(false),800)
+  },[])
   let token = localStorage.getItem("token");
 
   return (
@@ -63,7 +67,12 @@ const Liked = () => {
               </NavLink>
             </div>
             <div className="vedio-cards-cont">
-              {LikedData.length > 0 ? (
+             {
+               loading ?
+               <div className="load-img">
+                <img src="https://freefrontend.com/assets/img/css-loaders/loading.gif" alt="load" />
+                </div>:
+               LikedData.length > 0 ? (
                 LikedData.map((video, id) => {
                   return <LikeCard key={id} videoCollection={video} />;
                 })
@@ -80,7 +89,8 @@ const Liked = () => {
                     />
                   </div>
                 </>
-              )}
+              )
+             }
             </div>
           </>
         ) : (

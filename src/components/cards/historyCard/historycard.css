@@ -1,5 +1,5 @@
 .history-card-cont{
-    height: 20rem;
+    height: 25rem;
     width: 30rem;
     background-color: #fff;
     position: relative;
@@ -25,7 +25,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    top: -20rem;
+    top: -25rem;
     background-color: #dc4a3a50;
     display: flex;
     align-items: center;

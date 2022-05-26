@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import { useState,useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import HistoryCard from "../../components/cards/historyCard/HistoryCard";
 import Clear from "../../images/clear.png";
@@ -7,8 +7,11 @@ import "./history.css";
 import { useHistory } from "../../context/history-context";
 const History = () => {
   const { historyData, setHistoryData } = useHistory();
+  const [loading,setLoading] = useState(true)
   let token = localStorage.getItem("token");
-
+  useEffect(()=>{
+    setTimeout(()=>setLoading(false),800)
+  },[])
   const clearHistory = () => {
     axios
       .delete("/api/user/history/all", {
@@ -74,7 +77,14 @@ const History = () => {
               </NavLink>
             </div>
             <div className="vedio-cards-cont">
-              {historyData.length > 0 ? (
+              {
+                loading?
+                <div className="load-img">
+                <img src="https://freefrontend.com/assets/img/css-loaders/loading.gif" alt="load" />
+                </div>
+                
+                :
+                historyData.length > 0 ? (
                 historyData.map((video, id) => {
                   return <HistoryCard key={id} videoCollection={video} />;
                 })
@@ -92,6 +102,7 @@ const History = () => {
                   </div>
                 </>
               )}
+              
             </div>
           </>
         ) : (

@@ -19,7 +19,9 @@ const PlayListCard = (props) => {
     const postVedioToPlayList = async(video) => {
         try {
             await postVideoToPlayListService(props.list._id,video,token)
+            notify("Video Added")
             navigate("/playlist")
+
         } catch (error) {
             notify("Please Refresh, Some Error Occurred")
         }
@@ -28,6 +30,7 @@ const PlayListCard = (props) => {
     const deletePlayList = async() => {
         const res = await deleteFromListService('playlists',props.list._id,token)
         setListData(res.data.playlists)
+        notify("PlyList Deleted")
     };
 
 
