@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-
 import { usePlayList } from "../../context/playlist-context";
 import PlayListDisplayCard from "../../components/cards/playlistCard/PlayListDisplayCard";
 const PlayList = () => {

@@ -62,7 +62,32 @@
     padding: 1rem;
     
 }
-
+.loadmore-cont{
+    height: 3rem;
+    width: 100%;
+    border-radius: 25px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .5s;
+    background-color: #c54638b7;
+}
+.loadmore-cont:hover{
+    background-color: #dc4a3ad7;
+}
+.paginate-img-loading{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.paginate-img-loading img{
+    height: 5rem;
+}
 @media (max-width: 480px)  {
     .vediolisting-category span{
         margin: 1.8rem;
