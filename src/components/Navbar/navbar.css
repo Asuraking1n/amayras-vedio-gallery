@@ -59,7 +59,39 @@
     display: flex;
     align-items: center;
 }
+#logmeout{
+    margin-top: .3rem;
+}
+.buyPremium{
+    font-size: .8rem;
+    padding: .8rem 1.5rem;
+    border-radius: 20px;
+    background-color: #dc493a;
+    transition: all .8s;
+}
+.buyPremium:hover{
+    background-color: #fff;
+    color: #dc493a;
+    border-radius: 2px solid #dc493a;
+    font-weight: 600;
+}
+#premiumID{
+    font-size: .5rem;
+    padding:5px .5rem;
+    margin-left: 1rem;
+    margin-top: 5px;
+    color: #000;
+    font-weight: 1000;
+    cursor: pointer;
+    background-color: #39ee39;
+}
 @media (max-width: 480px)  {
+    #premiumID{
+        display: none;
+    }
+    .buyPremium{
+        display: none;
+    }
     .nav-routes{
         background-color: rgba(0, 0, 0, 0.664);
         flex-direction: column;
@@ -86,5 +118,11 @@
     }
     .hamburger{
         display: block;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 810px){
+    .buyPremium{
+        display: none;
     }
 }

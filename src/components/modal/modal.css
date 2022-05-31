@@ -9,19 +9,19 @@
     opacity: 1;
     align-items: center;
     justify-content: center;
-    background-color: rgba(235, 14, 14, 0.301);
+    background-color: #eb0e0e4d;
 }
 
 .modal-cont{
     height: 80%;
     width: 80%;
-    background-color: rgb(0, 0, 0);
+    background-color: #000000;
     position: relative;
 }
 .modal-close{
     height: 3rem;
     width: 3rem;
-    background: rgba(0, 0, 0, 0.719);
+    background: #000000b7;
     position: absolute;
     display: flex;
     align-items: center;
