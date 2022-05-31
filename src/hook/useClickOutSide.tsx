@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react'
 
-let useClickOutSide = (handler) => {
-    let domNode = useRef();
+let useClickOutSide = (handler:any) => {
+    let domNode:any = useRef();
     useEffect(() => {
-        let maybeHandler = (event) => {
+        let maybeHandler= (event:any) => {
             if (!domNode.current.contains(event.target)) {
                 handler();
             };

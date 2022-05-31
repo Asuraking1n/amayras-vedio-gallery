@@ -1,7 +1,7 @@
 import axios from "axios";
-export  function addTohistoryService(video, token) {
+export default function addToWatchLaterService(video:object, token:string | null) {
     const res = axios.post(
-        `/api/user/history`,
+        `/api/user/watchlater`,
         { video },
         {
             headers: {

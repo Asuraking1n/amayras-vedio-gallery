@@ -1,7 +1,7 @@
 import axios from "axios";
-export default function addToLikeService(video, token) {
+export  function addTohistoryService(video:object, token:string | null) {
     const res = axios.post(
-        `/api/user/likes`,
+        `/api/user/history`,
         { video },
         {
             headers: {
