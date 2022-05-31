@@ -75,7 +75,6 @@ export function makeServer({ environment = "development" } = {}) {
 
     routes() {
       this.passthrough('https://api.openweathermap.org/data/2.5/weather')
-      this.passthrough('/api/razorpay')
       this.namespace = "api";
       // auth routes (public)
       this.post("/auth/signup", signupHandler.bind(this));
