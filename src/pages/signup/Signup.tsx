@@ -12,10 +12,12 @@ const Login = () => {
         cpass:''
     })
     const notify = (msg:string) => toast(msg);
+    
     const dataHandler=(e:React.FormEvent<HTMLInputElement>)=>{
-      let name = (e.target as HTMLInputElement).name
-      let value = (e.target as HTMLInputElement).value
-        setUserCred({...userCred,[name]:value})
+      let event = e.target as HTMLInputElement;
+        let name = event.name;
+        let value = event.value;
+        setUserCred({...userCred,[name]:value});
     }
     const logInUser=async(e:React.MouseEvent)=>{
       e.preventDefault()

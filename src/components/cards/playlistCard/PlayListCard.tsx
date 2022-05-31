@@ -10,15 +10,23 @@ import checked from '../../../images/checked.png'
 import { usePlayList } from "../../../context/playlist-context";
 import { toast } from 'react-toastify';
 import { postVideoToPlayListService } from "../../../services/postVideoToPlayListService";
-const PlayListCard = (props) => {
+
+type listTypes = {
+    title: string,
+    description: string,
+    videos: object,
+    _id: string
+}
+const PlayListCard = ({ list, vedioData }: any) => {
+    const {title,_id}:listTypes = list
     const [isChecked, setIsChecked] = useState(false)
-    const {setListData} = usePlayList()
+    const { setListData } = usePlayList()
     const navigate = useNavigate();
     let token = localStorage.getItem("token");
-    const notify = (msg) => toast(msg);
-    const postVedioToPlayList = async(video) => {
+    const notify = (msg: string) => toast(msg);
+    const postVedioToPlayList = async (video: object) => {
         try {
-            await postVideoToPlayListService(props.list._id,video,token)
+            await postVideoToPlayListService(_id, video, token)
             notify("Video Added")
             navigate("/playlist")
 
@@ -26,9 +34,8 @@ const PlayListCard = (props) => {
             notify("Please Refresh, Some Error Occurred")
         }
     };
-
-    const deletePlayList = async() => {
-        const res = await deleteFromListService('playlists',props.list._id,token)
+    const deletePlayList = async () => {
+        const res = await deleteFromListService('playlists', _id, token)
         setListData(res.data.playlists)
         notify("PlyList Deleted")
     };
@@ -38,7 +45,7 @@ const PlayListCard = (props) => {
         <>
             <div className="playlist-section">
                 <div className="playList-card-cont">
-                    <Link to={`/playlist/` + props.list._id}>
+                    <Link to={`/playlist/` + _id}>
                         <div className="overlay-img">
                             <img
                                 src="https://inculture.microsoft.com/wp-content/uploads/prod/2020/01/fashion-globes-1600x900.jpg"
@@ -53,11 +60,11 @@ const PlayListCard = (props) => {
                             alt="play"
                         />
                     </div>
-                    <div className="p-title">{props.list.title}</div>
+                    <div className="p-title">{title}</div>
                 </div>
                 <div className="add-video-sec">
-                    <img src={delet} alt="dlt" data-tip data-for="deleteTip" onClick={deletePlayList}/>
-                    <img src={!isChecked ? add : checked} data-tip data-for="videoaddTip" alt="check" onClick={() => setIsChecked(true) || postVedioToPlayList(props.vedioData)} />
+                    <img src={delet} alt="dlt" data-tip data-for="deleteTip" onClick={deletePlayList} />
+                    <img src={!isChecked ? add : checked} data-tip data-for="videoaddTip" alt="check" onClick={() => { setIsChecked(true), postVedioToPlayList(vedioData) }} />
                 </div>
                 <ReactTooltip id="deleteTip" place="right" effect="solid">Delete PlayList</ReactTooltip>
                 <ReactTooltip id="videoaddTip" place="right" effect="solid">Add Video To PlayList</ReactTooltip>

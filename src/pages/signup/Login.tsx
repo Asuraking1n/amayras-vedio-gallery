@@ -21,13 +21,14 @@ const Login = () => {
       e.preventDefault()
       setUserCred(dummyUser)
     }
-    const dataHandler=(e:React.FormEvent<HTMLInputElement>)=>{
-        let name = (e.target as HTMLInputElement).name
-        let value = (e.target as HTMLInputElement).value
+    const dataHandler=(e : React.FormEvent<HTMLInputElement>)=>{
+        let event = e.target as HTMLInputElement;
+        let name = event.name
+        let value = event.value
         setUserCred({...userCred,[name]:value})
     }
  
-
+    
     const logInUser=async(e:React.MouseEvent)=>{
       e.preventDefault();
       try {
