@@ -1,11 +1,17 @@
 import { createContext, useContext, useEffect,useState } from "react";
 import axios from 'axios'
 import { useLocation } from "react-router-dom";
-const HistoryContext = createContext()
 
 
+const HistoryContext = createContext({})
 
-const HistoryProvider = ({ children }) => {
+
+type childrenType = {
+    children :JSX.Element;
+}
+
+
+const HistoryProvider = ({ children }:childrenType) => {
     const [historyData,setHistoryData] = useState([])
     const location = useLocation()
     let token = localStorage.getItem('token')

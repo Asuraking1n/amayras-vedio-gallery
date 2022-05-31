@@ -1,11 +1,13 @@
 import { createContext, useContext, useEffect,useState } from "react";
 import axios from 'axios'
 
-const videoContext = createContext()
+const videoContext = createContext({})
 
+type childrenType = {
+    children :JSX.Element;
+}
 
-
-const VideoProvider = ({ children }) => {
+const VideoProvider = ({ children }:childrenType) => {
     const [vedioData,setVedioData] = useState()
     useEffect(() => {
             axios.get('/api/videos')

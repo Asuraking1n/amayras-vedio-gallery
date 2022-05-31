@@ -2,9 +2,11 @@ import { createContext,useContext,useEffect,useState } from "react";
 import axios from 'axios'
 import { useLocation } from "react-router-dom";
 
-const playListContext = createContext()
-
-const PlayListProvider=({children})=>{
+const playListContext = createContext({})
+type childrenType = {
+    children :JSX.Element;
+}
+const PlayListProvider=({children}:childrenType)=>{
     const [ListData,setListData] = useState([])
     const location = useLocation()
     let token = localStorage.getItem('token')
