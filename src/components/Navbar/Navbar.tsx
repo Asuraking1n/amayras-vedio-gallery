@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./navbar.css";
 import Menu from "../../images/hamburger-black.png";
 import { Link,useNavigate } from "react-router-dom";
@@ -7,7 +7,7 @@ import profile from "../../images/profile-img.png";
 
 const Navbar = () => {
   const navigate = useNavigate()
-  const [isSidebar, setIsSidebar] = useState();
+  const [isSidebar, setIsSidebar] = useState("");
   let token = localStorage.getItem("token");
   let name = localStorage.getItem("name");
   const LogUserOut=()=>{
@@ -44,7 +44,7 @@ const Navbar = () => {
             src={arrow}
             alt="arrow"
             className="up-arrow"
-            onClick={() => setIsSidebar("")}
+            onClick={() => setIsSidebar(" ")}
           />
           <Link to="/" className="navLink">
             <span>Home</span>

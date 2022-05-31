@@ -2,8 +2,8 @@ import React from 'react'
 import { useClickOutSide } from '../../hook/useClickOutSide'
 import Cancel from '../../images/cancel.png'
 import './modal.css'
-const Modal = (props) => {
-  let domNode = useClickOutSide(()=>{
+const Modal = (props:any) => {
+  let domNode:any = useClickOutSide(()=>{
     props.openModal(false)
   })
   return (
@@ -19,7 +19,6 @@ const Modal = (props) => {
             src={`https://www.youtube.com/embed/${props.id}`}
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen="allowfullscreen"
             id='videoFrame'
           ></iframe>
         </div>

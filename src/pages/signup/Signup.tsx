@@ -1,4 +1,4 @@
-
+import { toast } from 'react-toastify';
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { SignupAPIservice } from '../../services/SignupAPIservice';
@@ -11,13 +11,15 @@ const Login = () => {
         pass:'',
         cpass:''
     })
-    const notify = (msg) => toast(msg);
-    const dataHandler=(e)=>{
-        let name = e.target.name
-        let value = e.target.value
-        setUserCred({...userCred,[name]:value})
+    const notify = (msg:string) => toast(msg);
+    
+    const dataHandler=(e:React.FormEvent<HTMLInputElement>)=>{
+      let event = e.target as HTMLInputElement;
+        let name = event.name;
+        let value = event.value;
+        setUserCred({...userCred,[name]:value});
     }
-    const logInUser=async(e)=>{
+    const logInUser=async(e:React.MouseEvent)=>{
       e.preventDefault()
       if(userCred.pass === userCred.cpass){
         try {

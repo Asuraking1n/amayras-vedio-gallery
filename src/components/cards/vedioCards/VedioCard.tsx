@@ -19,21 +19,28 @@ import { useLike } from '../../../context/like-context'
 import { useWatchLater } from "../../../context/watchlater-context";
 import NoteCard from "../noteCard/NoteCard";
 import ReactTooltip from "react-tooltip";
-const VedioCard = (props) => {
+
+type videoTypes = {
+  _id:string,
+  imgSrc:string,
+  title:string
+}
+const VedioCard = ({vedioData}:any) => {
+  const {_id,imgSrc,title}:videoTypes = vedioData
   const { LikedData } = useLike()
   const { WatchLaterData } = useWatchLater()
   const [isModal, setIsModal] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
-  const [isWatched, setIsWatched] = useState(WatchLaterData.some((val) => val._id === props.vedioData._id));
+  const [isWatched, setIsWatched] = useState(WatchLaterData.some((val:any) => val._id === _id));
   const [PlayisModal, setIsPlayModal] = useState(false);
   const [isModalNote, setisModalNote] = useState(false);
-  const [isLiked, setIsLiked] = useState(LikedData.some((val) => val._id === props.vedioData._id))
-  const [noteData, setNoteData] = useState(localStorage.getItem(`${props.vedioData._id}`))
+  const [isLiked, setIsLiked] = useState(LikedData.some((val:any) => val._id === _id))
+  const [noteData, setNoteData] = useState(localStorage.getItem(`${_id}`))
 
   let token = localStorage.getItem("token");
-  const notify = (msg) => toast(msg);
+  const notify = (msg:string) => toast(msg);
 
-  const addTohistory = async (video, token) => {
+  const addTohistory = async (video:object, token:string | null) => {
     if (token) {
       await addTohistoryService(video, token)
     } else {
@@ -42,7 +49,7 @@ const VedioCard = (props) => {
   };
 
 
-  const addToWatchLater = async (video, token) => {
+  const addToWatchLater = async (video:object, token:string | null) => {
     if (token) {
       const res = await addToWatchLaterService(video, token)
       if (res.status === 201) {
@@ -55,7 +62,7 @@ const VedioCard = (props) => {
 
 
 
-  const addToLike = async (video, token) => {
+  const addToLike = async (video:object, token:string | null) => {
     if (token) {
       await addToLikeService(video, token)
     } else {
@@ -70,37 +77,37 @@ const VedioCard = (props) => {
     <>
       {isModal ? (
         <Modal
-          openModal={(isModal) => setIsModal(isModal)}
-          id={props.vedioData._id}
+          openModal={(isModal:boolean) => setIsModal(isModal)}
+          id={_id}
         />
       ) : null}
       <div
         className="vedio-card-cont-sec"
         style={{
-          background: `url(${props.vedioData.imgSrc}) no-repeat center center/cover`,
+          background: `url(${imgSrc}) no-repeat center center/cover`,
         }}
       >
         <div className="vedio-card-cont-overlay">
           {noteData && <div className="note-pad">
             {noteData}
-            <img src={clear} alt="clear" onClick={() => setNoteData(localStorage.removeItem(`${props.vedioData._id}`))} />
+            <img src={clear} alt="clear" onClick={() => {setNoteData(null),localStorage.removeItem(_id)}} />
           </div>}
 
-          <div className="vedio-title">{props.vedioData.title}</div>
+          <div className="vedio-title">{title}</div>
           <div className="yellow-hover-overlay">
-            <button className="veiw-vedio-btn" onClick={() => setIsModal(true) || addTohistory(props.vedioData, token)}>
+            <button className="veiw-vedio-btn" onClick={() => {setIsModal(true) , addTohistory(vedioData, token)}}>
               View Video
             </button>
             <div className="vedio-btn-sec">
               {token&&
               <>
-              <div className="vedio-btn-circle-cont" data-tip data-for="likeTip">{isLiked ? <img src={likeDone} alt="like" onClick={() => setIsLiked(false)} /> : <img src={like} alt="like" onClick={() => setIsLiked(true) || addToLike(props.vedioData, token)} />}</div>
-              <div className="vedio-btn-circle-cont" data-tip data-for="copyTip" onClick={() => { navigator.clipboard.writeText(`https://www.youtube.com/embed/${props.vedioData._id}`) && setIsCopied(true) }}><img src={!isCopied ? share : copy} alt="share" /></div>
+              <div className="vedio-btn-circle-cont" data-tip data-for="likeTip">{isLiked ? <img src={likeDone} alt="like" onClick={() => setIsLiked(false)} /> : <img src={like} alt="like" onClick={() =>{ setIsLiked(true) , addToLike(vedioData, token)}} />}</div>
+              <div className="vedio-btn-circle-cont" data-tip data-for="copyTip" onClick={() => { {navigator.clipboard.writeText(`https://www.youtube.com/embed/${_id}`) , setIsCopied(true) }}}><img src={!isCopied ? share : copy} alt="share" /></div>
               <div className="vedio-btn-circle-cont" data-tip data-for="playTip"><img src={playlist} alt="list" onClick={() => setIsPlayModal(true)} /></div>
-              {PlayisModal ? <PlaylistModal vedioData={props.vedioData} closeModal={(IsPlayModal) => setIsPlayModal(IsPlayModal)} /> : null}
-              <div className="vedio-btn-circle-cont" data-tip data-for="watchTip"><img src={!isWatched ? clock : checked} alt="watchlater" onClick={() => addToWatchLater(props.vedioData, token)} /></div>
+              {PlayisModal ? <PlaylistModal vedioData={vedioData} closeModal={(IsPlayModal:boolean) => setIsPlayModal(IsPlayModal)} /> : null}
+              <div className="vedio-btn-circle-cont" data-tip data-for="watchTip"><img src={!isWatched ? clock : checked} alt="watchlater" onClick={() => addToWatchLater(vedioData, token)} /></div>
               <div className="vedio-btn-circle-cont" data-tip data-for="noteTip"><img src={isModalNote ? clear : pencil} alt="notes" onClick={() => isModalNote ? setisModalNote(false) : setisModalNote(true)} /></div>
-              {isModalNote && <NoteCard videoID={props.vedioData._id} updateNote={noteData => setNoteData(noteData)} closeNote={isModalNote=>setisModalNote(isModalNote)}/>}
+              {isModalNote && <NoteCard videoID={_id} updateNote={(noteData:any) => setNoteData(noteData)} closeNote={(isModalNote:boolean)=>setisModalNote(isModalNote)}/>}
               </>
               }
 

@@ -4,12 +4,12 @@ import { useVedioData } from "../../context/vedio-data-context";
 import { NavLink } from "react-router-dom";
 import "./vediolisting.css";
 const VedioListing = () => {
-  const { vedio } = useVedioData();
+  const { vedioData } = useVedioData();
   const [paginationCount, setPaginationCount] = useState(4)
   const [paginateLoading, setPaginateLoading] = useState(false)
   const [searchVideo, setSearchVideo] = useState('')
 
-  const initialVideo = vedio && vedio.slice(0, paginationCount)
+  const initialVideo = vedioData && vedioData.slice(0, paginationCount)
 
   const paginateVideo = () => {
     setPaginateLoading(true)
@@ -63,7 +63,7 @@ const VedioListing = () => {
           </NavLink>
         </div>
         <div className="vedio-cards-cont">
-          {!vedio ? (
+          {!vedioData ? (
             <>
               <img
                 src="https://freefrontend.com/assets/img/css-loaders/loading.gif"
@@ -72,7 +72,7 @@ const VedioListing = () => {
               />
             </>
           ) :
-            (initialVideo.filter((filterData) => filterData.title.toLowerCase().includes(searchVideo.toLowerCase()) ? filterData : null)
+            (initialVideo.filter((filterData:any) => filterData.title.toLowerCase().includes(searchVideo.toLowerCase()) ? filterData : null)
               .map((items, id) => {
                 return (
                   <VedioCard key={id} vedioData={items} />

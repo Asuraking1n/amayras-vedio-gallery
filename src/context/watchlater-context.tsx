@@ -1,11 +1,17 @@
 import { createContext, useContext, useEffect,useState } from "react";
 import axios from 'axios'
 import { useLocation } from "react-router-dom";
-const WatchLaterContext = createContext()
+type contextType={
+    WatchLaterData:string[],
+    setWatchLaterData: React.Dispatch<React.SetStateAction<never[]>>
+}
+const WatchLaterContext = createContext({} as contextType )
 
+type childrenType = {
+    children :JSX.Element;
+}
 
-
-const WatchLaterProvider = ({ children }) => {
+const WatchLaterProvider = ({ children }:childrenType) => {
     const [WatchLaterData,setWatchLaterData] = useState([])
     const location = useLocation()
     let token = localStorage.getItem('token')

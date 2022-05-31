@@ -1,7 +1,7 @@
 import axios from "axios";
-export default function addToWatchLaterService(video, token) {
+export default function addToLikeService(video:object, token:string | null) {
     const res = axios.post(
-        `/api/user/watchlater`,
+        `/api/user/likes`,
         { video },
         {
             headers: {

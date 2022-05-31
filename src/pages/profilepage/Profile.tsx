@@ -1,4 +1,3 @@
-import React from 'react'
 import Weather from '../../components/weather/Weather'
 import profile from '../../images/profile-img.png'
 import { useNavigate } from 'react-router-dom'

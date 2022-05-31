@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import './note.css'
-const NoteCard = (props) => {
+const NoteCard = (props:any) => {
     const [userText,setUserText] = useState('')
     const saveTextHandler=()=>{
         localStorage.setItem(`${props.videoID}`,userText)

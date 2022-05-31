@@ -10,7 +10,6 @@ import {
 import VedioListing from "./pages/vedioListing/VedioListing";
 import Login from "./pages/signup/Login";
 import Signup from './pages/signup/Signup'
-import Mockman from "mockman-js";
 import History from "./pages/WatchHistory/History";
 import Liked from "./pages/LikedVedio/Liked";
 import PlayList from "./pages/playList/PlayList";
@@ -20,10 +19,11 @@ import WatchLater from "./pages/watchlater/WatchLater";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 function App() {
-  const [token,setToken] = useState('')
+  const [token,setToken] = useState<string>('')
   const location = useLocation()
   useEffect(() => {
-    setToken(localStorage.getItem('token'))
+    const token = localStorage.getItem('token')
+    setToken(`${token}`)
   }, [location])
   
   return (
@@ -35,7 +35,6 @@ function App() {
             <Route  path="/vedios" element={<VedioListing />} />
             <Route  path="/login" element={<Login/>} />
             <Route  path="/signup" element={<Signup/>} />
-            <Route  path="/mockman" element={<Mockman />} />
             <Route  path="/history" element={<History/>} />
             <Route  path="/liked" element={<Liked/>} />
             <Route  path="/playlist" element={<PlayList/>} />
