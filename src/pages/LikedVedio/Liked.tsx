@@ -1,9 +1,14 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import { usePlayList } from "../../context/playlist-context";
-import PlayListDisplayCard from "../../components/cards/playlistCard/PlayListDisplayCard";
-const PlayList = () => {
-  const { ListData } = usePlayList();
+import {useState,useEffect} from "react";
+import {NavLink,Link  } from "react-router-dom";
+import "./liked.css";
+import LikeCard from "../../components/cards/likeCard/LikeCard";
+import { useLike } from "../../context/like-context";
+const Liked = () => {
+  const { LikedData } = useLike();
+  const [loading,setLoading] = useState(true)
+  useEffect(()=>{
+    setTimeout(()=>setLoading(false),800)
+  },[])
   let token = localStorage.getItem("token");
 
   return (
@@ -11,7 +16,9 @@ const PlayList = () => {
       <div className="vedioListing-cont-sec history-sec-con">
         {token ? (
           <>
-            <div className="vediolisting-heading history-heading">PlayList</div>
+            <div className="vediolisting-heading history-heading">
+              Liked Videos
+            </div>
             <div className="vediolisting-category">
               <NavLink
                 to="/vedios"
@@ -60,14 +67,19 @@ const PlayList = () => {
               </NavLink>
             </div>
             <div className="vedio-cards-cont">
-              {ListData.length > 0 ? (
-                ListData.map((video, id) => {
-                  return <PlayListDisplayCard key={id} list={video} />;
+             {
+               loading ?
+               <div className="load-img">
+                <img src="https://freefrontend.com/assets/img/css-loaders/loading.gif" alt="load" />
+                </div>:
+               LikedData.length > 0 ? (
+                LikedData.map((video:any, id:string) => {
+                  return <LikeCard key={id} videoCollection={video} />;
                 })
               ) : (
                 <>
                   <div className="blank-load">
-                    <span>Don't you want to add SomeThing ? </span>
+                    <span>Don't you like SomeThing ? ? </span>
                     <Link to="/vedios">
                       <button>Explore</button>
                     </Link>
@@ -77,14 +89,13 @@ const PlayList = () => {
                     />
                   </div>
                 </>
-              )}
+              )
+             }
             </div>
           </>
         ) : (
           <>
-            <div className="login-user">
-              LogIn To Create your very own playList 😃
-            </div>
+            <div className="login-user">LogIn To add liked vedios 😃</div>
           </>
         )}
       </div>
@@ -92,4 +103,4 @@ const PlayList = () => {
   );
 };
 
-export default PlayList;
+export default Liked;

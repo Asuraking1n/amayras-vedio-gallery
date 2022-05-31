@@ -85,7 +85,7 @@ const History = () => {
                 
                 :
                 historyData.length > 0 ? (
-                historyData.map((video, id) => {
+                historyData.map((video:any, id:string) => {
                   return <HistoryCard key={id} videoCollection={video} />;
                 })
               ) : (

@@ -1,23 +1,22 @@
-import {useState,useEffect} from "react";
-import {NavLink,Link  } from "react-router-dom";
-import "./liked.css";
-import LikeCard from "../../components/cards/likeCard/LikeCard";
-import { useLike } from "../../context/like-context";
-const Liked = () => {
-  const { LikedData } = useLike();
+
+import  { useState, useEffect } from "react";
+import { Link, NavLink } from "react-router-dom";
+import WatchLaterCard from "../../components/cards/WatchLaterCard/WatchLaterCard";
+import { useWatchLater } from "../../context/watchlater-context";
+const WatchLater = () => {
+  const { WatchLaterData } = useWatchLater();
+  let token = localStorage.getItem("token");
   const [loading,setLoading] = useState(true)
   useEffect(()=>{
     setTimeout(()=>setLoading(false),800)
   },[])
-  let token = localStorage.getItem("token");
-
   return (
     <>
       <div className="vedioListing-cont-sec history-sec-con">
         {token ? (
           <>
             <div className="vediolisting-heading history-heading">
-              Liked Videos
+              Watch Later
             </div>
             <div className="vediolisting-category">
               <NavLink
@@ -67,19 +66,19 @@ const Liked = () => {
               </NavLink>
             </div>
             <div className="vedio-cards-cont">
-             {
-               loading ?
-               <div className="load-img">
+              {loading?
+                <div className="load-img">
                 <img src="https://freefrontend.com/assets/img/css-loaders/loading.gif" alt="load" />
-                </div>:
-               LikedData.length > 0 ? (
-                LikedData.map((video, id) => {
-                  return <LikeCard key={id} videoCollection={video} />;
+                </div>
+              :
+               (WatchLaterData.length>0? (
+                 WatchLaterData.map((video:any, id:string) => {
+                  return <WatchLaterCard key={id} videoCollection={video} />;
                 })
               ) : (
                 <>
                   <div className="blank-load">
-                    <span>Don't you like SomeThing ? ? </span>
+                    <span>Why Havn't You added something ? </span>
                     <Link to="/vedios">
                       <button>Explore</button>
                     </Link>
@@ -89,13 +88,15 @@ const Liked = () => {
                     />
                   </div>
                 </>
-              )
-             }
+              ))
+              }
             </div>
           </>
         ) : (
           <>
-            <div className="login-user">LogIn To add liked vedios 😃</div>
+            <div className="login-user">
+              LogIn To add something 😃
+            </div>
           </>
         )}
       </div>
@@ -103,4 +104,4 @@ const Liked = () => {
   );
 };
 
-export default Liked;
+export default WatchLater;

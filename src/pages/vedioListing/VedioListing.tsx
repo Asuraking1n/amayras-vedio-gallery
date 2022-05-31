@@ -72,8 +72,8 @@ const VedioListing = () => {
               />
             </>
           ) :
-            (initialVideo.filter((filterData) => filterData.title.toLowerCase().includes(searchVideo.toLowerCase()) ? filterData : null)
-              .map((items, id) => {
+            (initialVideo.filter((filterData:any) => filterData.title.toLowerCase().includes(searchVideo.toLowerCase()) ? filterData : null)
+              .map((items:any, id:string) => {
                 return (
                   <VedioCard key={id} vedioData={items} />
                 )

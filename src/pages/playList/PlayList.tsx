@@ -1,23 +1,16 @@
-
-import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import WatchLaterCard from "../../components/cards/WatchLaterCard/WatchLaterCard";
-import { useWatchLater } from "../../context/watchlater-context";
-const WatchLater = () => {
-  const { WatchLaterData } = useWatchLater();
+import { usePlayList } from "../../context/playlist-context";
+import PlayListDisplayCard from "../../components/cards/playlistCard/PlayListDisplayCard";
+const PlayList = () => {
+  const { ListData } = usePlayList();
   let token = localStorage.getItem("token");
-  const [loading,setLoading] = useState(true)
-  useEffect(()=>{
-    setTimeout(()=>setLoading(false),800)
-  },[])
+
   return (
     <>
       <div className="vedioListing-cont-sec history-sec-con">
         {token ? (
           <>
-            <div className="vediolisting-heading history-heading">
-              Watch Later
-            </div>
+            <div className="vediolisting-heading history-heading">PlayList</div>
             <div className="vediolisting-category">
               <NavLink
                 to="/vedios"
@@ -66,19 +59,14 @@ const WatchLater = () => {
               </NavLink>
             </div>
             <div className="vedio-cards-cont">
-              {loading?
-                <div className="load-img">
-                <img src="https://freefrontend.com/assets/img/css-loaders/loading.gif" alt="load" />
-                </div>
-              :
-               (WatchLaterData.length>0? (
-                 WatchLaterData.map((video, id) => {
-                  return <WatchLaterCard key={id} videoCollection={video} />;
+              {ListData.length > 0 ? (
+                ListData.map((video:any, id:string) => {
+                  return <PlayListDisplayCard key={id} list={video} />;
                 })
               ) : (
                 <>
                   <div className="blank-load">
-                    <span>Why Havn't You added something ? </span>
+                    <span>Don't you want to add SomeThing ? </span>
                     <Link to="/vedios">
                       <button>Explore</button>
                     </Link>
@@ -88,14 +76,13 @@ const WatchLater = () => {
                     />
                   </div>
                 </>
-              ))
-              }
+              )}
             </div>
           </>
         ) : (
           <>
             <div className="login-user">
-              LogIn To add something 😃
+              LogIn To Create your very own playList 😃
             </div>
           </>
         )}
@@ -104,4 +91,4 @@ const WatchLater = () => {
   );
 };
 
-export default WatchLater;
+export default PlayList;

@@ -14,21 +14,21 @@ const Login = () => {
       email: "nishant@gmail.com",
       pass: "nishant"
     }
-    const notify = (msg) => toast(msg,{
+    const notify = (msg:string) => toast(msg,{
       autoClose:1000
     });
-    const addDummyUser=(e)=>{
+    const addDummyUser=(e:React.MouseEvent)=>{
       e.preventDefault()
       setUserCred(dummyUser)
     }
-    const dataHandler=(e)=>{
-        let name = e.target.name
-        let value = e.target.value
+    const dataHandler=(e:React.FormEvent<HTMLInputElement>)=>{
+        let name = (e.target as HTMLInputElement).name
+        let value = (e.target as HTMLInputElement).value
         setUserCred({...userCred,[name]:value})
     }
  
 
-    const logInUser=async(e)=>{
+    const logInUser=async(e:React.MouseEvent)=>{
       e.preventDefault();
       try {
         const res = await LoginAPIservice(userCred)

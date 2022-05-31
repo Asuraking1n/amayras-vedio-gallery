@@ -1,4 +1,3 @@
-import React from "react";
 import "./homepage.css";
 import circlebg from "../../images/circle-bg.png";
 import Linkedin from "../../images/linkedin.png";
