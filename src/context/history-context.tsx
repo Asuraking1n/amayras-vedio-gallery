@@ -2,8 +2,11 @@ import { createContext, useContext, useEffect,useState } from "react";
 import axios from 'axios'
 import { useLocation } from "react-router-dom";
 
-
-const HistoryContext = createContext({})
+type contextType={
+    historyData:string[],
+    setHistoryData: React.Dispatch<React.SetStateAction<never[]>> 
+}
+const HistoryContext = createContext({} as contextType)
 
 
 type childrenType = {

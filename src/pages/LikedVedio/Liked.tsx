@@ -73,7 +73,7 @@ const Liked = () => {
                 <img src="https://freefrontend.com/assets/img/css-loaders/loading.gif" alt="load" />
                 </div>:
                LikedData.length > 0 ? (
-                LikedData.map((video:any, id:string) => {
+                LikedData.map((video, id) => {
                   return <LikeCard key={id} videoCollection={video} />;
                 })
               ) : (

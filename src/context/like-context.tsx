@@ -2,7 +2,11 @@ import { createContext,useContext,useEffect,useState } from "react";
 import axios from 'axios'
 import { useLocation } from "react-router-dom";
 
-const LikeContext = createContext({})
+type contextType={
+    LikedData:string[],
+    setLikedData?: React.Dispatch<React.SetStateAction<never[]>>
+}
+const LikeContext = createContext({} as contextType)
 type childrenType = {
     children :JSX.Element;
 }

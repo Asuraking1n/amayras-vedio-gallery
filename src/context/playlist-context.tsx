@@ -2,7 +2,12 @@ import { createContext,useContext,useEffect,useState } from "react";
 import axios from 'axios'
 import { useLocation } from "react-router-dom";
 
-const playListContext = createContext({})
+
+type contextType={
+    ListData:string[],
+    setListData?: React.Dispatch<React.SetStateAction<never[]>>
+}
+const playListContext = createContext({} as contextType)
 type childrenType = {
     children :JSX.Element;
 }

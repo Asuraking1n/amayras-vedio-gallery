@@ -72,7 +72,7 @@ const WatchLater = () => {
                 </div>
               :
                (WatchLaterData.length>0? (
-                 WatchLaterData.map((video:any, id:string) => {
+                 WatchLaterData.map((video, id) => {
                   return <WatchLaterCard key={id} videoCollection={video} />;
                 })
               ) : (

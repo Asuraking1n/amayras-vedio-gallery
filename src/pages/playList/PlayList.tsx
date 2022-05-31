@@ -60,7 +60,7 @@ const PlayList = () => {
             </div>
             <div className="vedio-cards-cont">
               {ListData.length > 0 ? (
-                ListData.map((video:any, id:string) => {
+                ListData.map((video, id) => {
                   return <PlayListDisplayCard key={id} list={video} />;
                 })
               ) : (

@@ -1,7 +1,11 @@
 import { createContext, useContext, useEffect,useState } from "react";
 import axios from 'axios'
 import { useLocation } from "react-router-dom";
-const WatchLaterContext = createContext({})
+type contextType={
+    WatchLaterData:string[],
+    setWatchLaterData?: React.Dispatch<React.SetStateAction<never[]>>
+}
+const WatchLaterContext = createContext({} as contextType )
 
 type childrenType = {
     children :JSX.Element;
