@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import './playlistModal.css'
 import newplaylist from '../../images/newPlaylist.png'
 import cancel from '../../images/clear.png'
@@ -8,12 +8,12 @@ import ReactTooltip from "react-tooltip";
 import { usePlayList } from '../../context/playlist-context'
 import { toast } from 'react-toastify';
 import { useClickOutSide } from '../../hook/useClickOutSide'
-const PlaylistModal = (props) => {
+const PlaylistModal = (props:any) => {
     const { ListData, setListData } = usePlayList()
     const [listInput, setListinput] = useState('')
     let token = localStorage.getItem("token");
-    const notify = (msg) => toast(msg);
-    let domNode = useClickOutSide(()=>{
+    const notify = (msg:string) => toast(msg);
+    let domNode:any = useClickOutSide(()=>{
         props.closeModal(false)
     })
     const creatNewPlayList = async () => {
@@ -29,7 +29,7 @@ const PlaylistModal = (props) => {
                 : alert('Please Refresh, Some Error Occurred'))
         }
     }
-    const dataInList = ListData.some(val=>val.title === listInput)
+    const dataInList = ListData.some((val:any)=>val.title === listInput)
     return (
         <>
             <div className="modal-overlay" >
@@ -46,7 +46,7 @@ const PlaylistModal = (props) => {
                     <ReactTooltip id="closeTip" place="bottom" effect="solid">Close Modal</ReactTooltip>
                     <hr />
                     <div className="playlist-card-cont">
-                        {ListData.map((val, id) => {
+                        {ListData.map((val:object, id:string) => {
                             return (
                                 <PlayListCard key={id} list={val} vedioData={props.vedioData} />
                             )
