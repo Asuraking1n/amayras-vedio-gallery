@@ -101,3 +101,11 @@
         display: none;
     }
 }
+@media (min-width: 810px) and (max-width: 1000px){
+    .price span{
+        font-size: 2rem;
+    }
+    .premium-benifits{
+        line-height: 30px;
+    }
+}

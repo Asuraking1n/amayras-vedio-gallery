@@ -80,3 +80,32 @@
         margin-left: 2rem;
     }
 }
+
+@media (min-width: 481px) and (max-width: 1000px){
+
+    .profile-cont{
+        flex-direction: column;
+    }
+    .weather-sec{
+        left: 5px;
+    }
+    .profile-img{
+        width: 100%;
+    }
+    .profile-img img{
+        width: 80%;
+    }
+    .profile-data-sec{
+        width: 100%;
+    }
+    .profile-cont{
+        overflow: auto;
+    }
+    .welcome{
+        font-size: 5rem;
+        margin-left: 2rem;
+    }
+    .profile-btn button{
+        margin-left: 2rem;
+    }
+}

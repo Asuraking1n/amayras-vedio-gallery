@@ -5,5 +5,5 @@
   box-sizing: border-box;
 }
 iframe{
-  pointer-events: none;
+  /* pointer-events: none; */
 }
