@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 
 type contextType={
     LikedData:string[],
-    setLikedData?: React.Dispatch<React.SetStateAction<never[]>>
+    setLikedData: React.Dispatch<React.SetStateAction<never[]>>
 }
 const LikeContext = createContext({} as contextType)
 type childrenType = {

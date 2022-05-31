@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 
 type contextType={
     ListData:string[],
-    setListData?: React.Dispatch<React.SetStateAction<never[]>>
+    setListData: React.Dispatch<React.SetStateAction<never[]>>
 }
 const playListContext = createContext({} as contextType)
 type childrenType = {

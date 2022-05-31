@@ -2,6 +2,7 @@ import  { useState } from 'react'
 import './playlistModal.css'
 import newplaylist from '../../images/newPlaylist.png'
 import cancel from '../../images/clear.png'
+
 import PlayListCard from '../cards/playlistCard/PlayListCard'
 import axios from 'axios'
 import ReactTooltip from "react-tooltip";
@@ -25,7 +26,7 @@ const PlaylistModal = (props:any) => {
                     authorization: token
                 }
             }).then((res) => res.status === 201 ?
-                setListData(res.data.playlists)  || notify('New PlayList Added')
+                (setListData(res.data.playlists) , notify('New PlayList Added'))
                 : alert('Please Refresh, Some Error Occurred'))
         }
     }
@@ -46,7 +47,7 @@ const PlaylistModal = (props:any) => {
                     <ReactTooltip id="closeTip" place="bottom" effect="solid">Close Modal</ReactTooltip>
                     <hr />
                     <div className="playlist-card-cont">
-                        {ListData.map((val:object, id:string) => {
+                        {ListData.map((val, id) => {
                             return (
                                 <PlayListCard key={id} list={val} vedioData={props.vedioData} />
                             )
