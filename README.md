@@ -79,6 +79,7 @@ Of course, no one Video Library will serve all projects since your needs may be 
 * [CSS](https://www.w3schools.com/css/)
 * [React.js](https://reactjs.org/)
 *[MockBEE](http://mockbee.netlify.app/docs)
+*[typeScript](https://www.typescriptlang.org/docs/handbook/react.html)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
