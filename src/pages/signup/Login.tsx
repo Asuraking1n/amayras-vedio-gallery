@@ -2,6 +2,7 @@
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
+import profile from '../../images/profile-img.png'
 import './signup.css'
 import { LoginAPIservice } from '../../services/LoginAPIservice';
 const Login = () => {
@@ -36,6 +37,7 @@ const Login = () => {
         if(res.status === 200){
           localStorage.setItem('token',res.data.encodedToken)
           localStorage.setItem('name',res.data.foundUser.firstName)
+          localStorage.setItem('profile',profile)
           navigate('/vedios')
         }
       } catch (error) {

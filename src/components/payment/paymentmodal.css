@@ -1,0 +1,111 @@
+
+.payment-sec{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000000000000000;
+    display: flex;
+    opacity: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: #eb0e0e4d;
+}
+.payment-modal{
+    background-color: #fff;
+    width: 50%;
+    position: relative;
+    overflow: hidden;
+}
+.profile-card{
+    height: 10rem;
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #DC493A;
+}
+
+.price{
+    height: 100%;
+    margin: 0 5rem;
+    padding-top: 1rem;
+}
+.price span{
+    font-size: 3.5rem;
+    font-weight: 1000;
+}
+.profile-img-payment{
+    width: 68%;
+    height: 10rem;
+    padding: 4rem;
+    box-sizing: border-box;
+    background-color: #DC493A;
+}
+.profile-card img{
+    height: 10rem;
+    width: 10rem;
+    margin: 0 2rem;
+}
+.features{
+    margin-top: 6rem;
+    margin-left: 5rem;
+    color: #000;
+    display: flex;
+}
+.premium-benifits{
+    width: 50%;
+    line-height: 50px;
+    font-size: 1rem;
+    color: #DC493A;
+    font-weight: 1000;
+}
+.buy-sec{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+.buy-sec button{
+    height: 3rem;
+    width: 15rem;
+    border: 2px solid #DC493A;
+    background-color: #fff;
+    color: #DC493A;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all .5s;
+    cursor: pointer;
+}
+.buy-sec button:hover{
+    background-color: #DC493A;
+    color: #fff;
+}
+
+@media (max-width: 480px)  {
+    .payment-modal{
+        display: none;
+    }
+    .payment-sec{
+        display: none;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 810px){
+    .payment-modal{
+        display: none;
+    }
+    .payment-sec{
+        display: none;
+    }
+}
+@media (min-width: 810px) and (max-width: 1000px){
+    .price span{
+        font-size: 2rem;
+    }
+    .premium-benifits{
+        line-height: 30px;
+    }
+}

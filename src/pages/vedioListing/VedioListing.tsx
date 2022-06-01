@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import VedioCard from "../../components/cards/vedioCards/VedioCard";
 import { useVedioData } from "../../context/vedio-data-context";
 import { NavLink } from "react-router-dom";
@@ -8,7 +8,6 @@ const VedioListing = () => {
   const [paginationCount, setPaginationCount] = useState(4)
   const [paginateLoading, setPaginateLoading] = useState(false)
   const [searchVideo, setSearchVideo] = useState('')
-
   const initialVideo = vedioData && vedioData.slice(0, paginationCount)
 
   const paginateVideo = () => {
@@ -18,8 +17,10 @@ const VedioListing = () => {
       setPaginationCount(paginationCount + 4)
     }, 1000)
   }
+
+
   return (
-    <>
+    <> 
       <div className="vedioListing-cont-sec">
         <div className="vediolisting-heading">Gallery</div>
         <div className="search-field">
