@@ -2,8 +2,8 @@ import { createContext,useContext,useState } from "react";
 
 
 type contextType={
-    PremiumData:boolean,
-    setPremiumData: React.Dispatch<React.SetStateAction<boolean>>
+    PremiumData:boolean | string,
+    setPremiumData: React.Dispatch<React.SetStateAction<string | boolean>>
 }
 
 const premiumContext = createContext({} as contextType)
@@ -12,7 +12,7 @@ type childrenType = {
 }
 
 const PremiumProvider = ({children}:childrenType)=>{
-    const [PremiumData,setPremiumData] = useState(false)
+    const [PremiumData,setPremiumData] = useState( sessionStorage.getItem('isPremium')||false)
 
     return(
         <premiumContext.Provider value={{PremiumData,setPremiumData}}>

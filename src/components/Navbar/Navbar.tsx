@@ -3,7 +3,6 @@ import "./navbar.css";
 import Menu from "../../images/hamburger-black.png";
 import { Link, useNavigate } from "react-router-dom";
 import arrow from "../../images/arrow-up.png";
-import profile from "../../images/profile-img.png";
 import { usePremiumData } from "../../context/premium-context";
 import PaymentModal from "../payment/PaymentModal";
 
@@ -15,8 +14,7 @@ const Navbar = () => {
   let token = localStorage.getItem("token");
   let name = localStorage.getItem("name");
   const LogUserOut = () => {
-    localStorage.removeItem('token')
-    localStorage.removeItem('name')
+    localStorage.clear()
     navigate('/')
   }
   return (
@@ -25,7 +23,7 @@ const Navbar = () => {
         {token ?
           (<div className="user-profile-section" onClick={() => navigate('/profile')}>
             <div className="profile-avtar">
-              <img src={profile} alt="avatar" />
+              <img src={`${localStorage.getItem('profile')}`} alt="avatar" />
             </div>
             <a href="#" className="nav-logo">
               {name}

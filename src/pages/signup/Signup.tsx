@@ -1,6 +1,7 @@
 import { toast } from 'react-toastify';
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import profile from '../../images/profile-img.png'
 import { SignupAPIservice } from '../../services/SignupAPIservice';
 
 import './signup.css'
@@ -25,6 +26,8 @@ const Login = () => {
         try {
           const res = await SignupAPIservice(userCred)
           localStorage.setItem('token',res.data.encodedToken)
+          localStorage.setItem('name',res.data.foundUser.firstName)
+          localStorage.setItem('profile',profile)
           navigate('/')
         } catch (error) {
           notify('Got API Error, Refresh and retry')

@@ -7,7 +7,8 @@
 }
 .profile-img{
     height: 100%;
-    width: 50%;
+    width: 40%;
+    /* overflow: hidden; */
 }
 
 .profile-img img{
@@ -55,7 +56,22 @@
     align-items:center ;
 }
 
+.choose-profile{
+    height: 100%;
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
 
+.choose-profile img{
+    height: 5rem;
+    width: 5rem;
+    margin: 2rem 0;
+    cursor: pointer;
+    border-radius: 50%;
+}
 @media (max-width: 480px)  {
     .profile-cont{
         flex-direction: column;
@@ -79,6 +95,14 @@
     .profile-btn button{
         margin-left: 2rem;
     }
+    .choose-profile{
+        width: 100%;
+        flex-direction: row;
+        
+    }
+    .choose-profile img{
+        margin: 1rem 2rem;
+    }
 }
 
 @media (min-width: 481px) and (max-width: 1000px){
@@ -88,6 +112,15 @@
     }
     .weather-sec{
         left: 5px;
+    }
+    
+    .choose-profile{
+        width: 100%;
+        flex-direction: row;
+        
+    }
+    .choose-profile img{
+        margin: 1rem 2rem;
     }
     .profile-img{
         width: 100%;

@@ -19,6 +19,7 @@ import { useLike } from '../../../context/like-context'
 import { useWatchLater } from "../../../context/watchlater-context";
 import NoteCard from "../noteCard/NoteCard";
 import ReactTooltip from "react-tooltip";
+import { usePremiumData } from "../../../context/premium-context";
 
 type videoTypes = {
   _id:string,
@@ -29,6 +30,7 @@ const VedioCard = ({vedioData}:any) => {
   const {_id,imgSrc,title}:videoTypes = vedioData
   const { LikedData } = useLike()
   const { WatchLaterData } = useWatchLater()
+  const {PremiumData} = usePremiumData()
   const [isModal, setIsModal] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
   const [isWatched, setIsWatched] = useState(WatchLaterData.some((val:any) => val._id === _id));
@@ -106,8 +108,13 @@ const VedioCard = ({vedioData}:any) => {
               <div className="vedio-btn-circle-cont" data-tip data-for="playTip"><img src={playlist} alt="list" onClick={() => setIsPlayModal(true)} /></div>
               {PlayisModal ? <PlaylistModal vedioData={vedioData} closeModal={(IsPlayModal:boolean) => setIsPlayModal(IsPlayModal)} /> : null}
               <div className="vedio-btn-circle-cont" data-tip data-for="watchTip"><img src={!isWatched ? clock : checked} alt="watchlater" onClick={() => addToWatchLater(vedioData, token)} /></div>
-              <div className="vedio-btn-circle-cont" data-tip data-for="noteTip"><img src={isModalNote ? clear : pencil} alt="notes" onClick={() => isModalNote ? setisModalNote(false) : setisModalNote(true)} /></div>
+              {
+                PremiumData
+                &&
+                <div className="vedio-btn-circle-cont" data-tip data-for="noteTip"><img src={isModalNote ? clear : pencil} alt="notes" onClick={() => isModalNote ? setisModalNote(false) : setisModalNote(true)} /></div>
+              }
               {isModalNote && <NoteCard videoID={_id} updateNote={(noteData:any) => setNoteData(noteData)} closeNote={(isModalNote:boolean)=>setisModalNote(isModalNote)}/>}
+              
               </>
               }
 

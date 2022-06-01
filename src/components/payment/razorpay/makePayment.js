@@ -16,7 +16,7 @@ const makePayment = async (setPremiumData) => {
     progress: undefined,
     })
   var options = {
-    key: "rzp_test_LOK2Oboy6YH5gw", // Enter the Key ID generated from the Dashboard
+    key: "rzp_test_LOK2Oboy6YH5gw", 
     key_id: "rzp_test_LOK2Oboy6YH5gw",
     key_secret: "sxIbBI0dELrrB0p6gJzwh9ID",
     name: "Amayra's Group",
@@ -26,7 +26,7 @@ const makePayment = async (setPremiumData) => {
 
     handler: function (response) {
         setPremiumData(true)
-      // Validate payment at server - using webhooks is a better idea.
+        sessionStorage.setItem('isPremium',true)
       notify(
         `Your payment is done with orderno-,${response.razorpay_payment_id}`
       );
